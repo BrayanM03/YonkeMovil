@@ -64,7 +64,7 @@
                             <i class="ti-search"></i>
                         </a>
                         <a href="index.html">
-                            <img class="img-fluid" style="width: 90px; margin: auto;" src="assets/images/logo.png" alt="Theme-Logo" />
+                            <img class="img" style="width: 86px; margin-left:50px;" src="assets/images/logo.png" alt="Theme-Logo" />
                         </a>
                         <a class="mobile-options">
                             <i class="ti-more"></i>
@@ -175,7 +175,7 @@
                                 <div class="main-menu-header">
                                     <img class="img-40 img-radius" src="assets/images/avatar-4.jpg" alt="User-Profile-Image">
                                     <div class="user-details">
-                                        <span>John Doe</span>
+                                        <span>Brayan Maldonado</span>
                                         <span id="more-details">UX Designer<i class="ti-angle-down"></i></span>
                                     </div>
                                 </div>
