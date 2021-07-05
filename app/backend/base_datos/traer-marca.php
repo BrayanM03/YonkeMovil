@@ -36,6 +36,6 @@
       }
 
 
-           echo json_encode($clientes_encontrados, JSON_UNESCAPED_UNICODE);
+           echo json_encode($marcas_encontrados, JSON_UNESCAPED_UNICODE);
   }
     ?>

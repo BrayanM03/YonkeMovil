@@ -5,7 +5,7 @@ include 'app/backend/login/conexion.php';
 
  session_start();
 
- if(empty($_SESSION["rol"])){
+ if(empty($_SESSION["id"])){
     header("Location:login.php");
     die();
  }
@@ -48,6 +48,8 @@ include 'app/backend/login/conexion.php';
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
       <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+      <link rel="stylesheet" type="text/css" href="app/frontend/css/base_datos/modelos.css">
+       
   </head>
 
   <body>

@@ -48,6 +48,7 @@ include 'app/backend/login/conexion.php';
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
       <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+      <link rel="stylesheet" type="text/css" href="app/frontend/css/base_datos/modelos.css">
 
       <!---Plugin--->
       <link rel="stylesheet" type="text/css" href="app/frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">   
@@ -55,6 +56,7 @@ include 'app/backend/login/conexion.php';
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
      <link rel="stylesheet" type="text/css" href="app/frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="app/frontend/node_modules/select2-bootstrap-theme/dist/select2-bootstrap.css">
 
         
    <!--      <link rel="stylesheet" type="text/css" href="app/frontend/node_modules/datatables.net-bs4/css/dataTables.bootstrap5.min.css"> 
@@ -461,22 +463,22 @@ include 'app/backend/login/conexion.php';
 <script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <!-- jquery slimscroll js -->
 <script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
-<!-- modernizr js -->
+
 <script type="text/javascript" src="assets/js/modernizr/modernizr.js"></script>
-<!-- am chart -->
+
 <script src="assets/pages/widget/amchart/amcharts.min.js"></script>
 <script src="assets/pages/widget/amchart/serial.min.js"></script>
-<!-- Todo js -->
 <script type="text/javascript " src="assets/pages/todo/todo.js "></script>
-<!-- Custom js -->
+
 <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
 <script type="text/javascript" src="assets/js/script.js"></script>
 <script type="text/javascript " src="assets/js/SmoothScroll.js"></script>
 <script src="assets/js/pcoded.min.js"></script>
 <script src="assets/js/demo-12.js"></script>
-<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script> 
 
 <!---Plugins-->
 <script src="app/frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>

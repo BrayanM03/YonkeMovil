@@ -57,8 +57,8 @@ MostrarModelos();
 function agregarModelo() {
 
     Swal.fire({
-      title: "Agregar proveedor nuevo",
-      html: '<form class="mt-4" id="agregar-proveedor">'+
+      title: "Agregar modelo nuevo",
+      html: '<form class="mt-4" id="agregar-proveedor">'+ 
   
   
           '<div class="col-12">'+
@@ -75,8 +75,8 @@ function agregarModelo() {
   
           '<div class="col-6">'+
           '<div class="form-group">'+
-          '<label><b>Telefono</b></label>'+
-          '<input type="number" class="form-control" name="telefono" id="telefono" placeholder="+52 ...">'+
+          '<label><b>Modelo</b></label>'+
+          '<select type="number" class="form-control" name="telefono" id="telefono" placeholder="+52 ...">'+
       '</div>'+
     '</div>'+
     '<div class="col-6">'+
@@ -121,7 +121,7 @@ function agregarModelo() {
         $("#marca").select2({
             placeholder: "Busca una marca...",
             theme: "bootstrap",
-            minimumInputLength: 1,
+            minimumInputLength: 0,
             ajax: {
                 url: "./app/backend/base_datos/traer-marca.php",
                 type: "post",
@@ -173,7 +173,7 @@ function agregarModelo() {
 
    var $container = $(
        "<div style='' class='select2-result-repository clearfix'>" +
-       "<div>" + repo.nombre +" </div>"+
+       "<div style='width:100%;'><img style='width:40px; border:1px solid gray; border-radius:7px; margin-rigth:20px;' src='./app/frontend/img/marcas/"+ repo.nombre +".JPG'></img><span style='margin-left:10px;'>" + repo.imagen +"</span> </div>"+
        "</div>"
    );
 
@@ -183,7 +183,7 @@ function agregarModelo() {
             }
 
 function formatRepoSelectionS  (repo) {
-              return repo.text || repo.nombre;
+              return repo.text || repo.imagen;
             }
 
 
