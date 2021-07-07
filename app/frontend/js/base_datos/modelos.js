@@ -75,20 +75,20 @@ function agregarModelo() {
   
           '<div class="col-6">'+
           '<div class="form-group">'+
-          '<label><b>Modelo</b></label>'+
-          '<select type="number" class="form-control" name="telefono" id="telefono" placeholder="+52 ...">'+
+          '<label><b>Año</b></label>'+
+          '<select class="form-control" name="año" id="año"></select>'+
       '</div>'+
     '</div>'+
     '<div class="col-6">'+
           '<div class="form-group">'+
-          '<label><b>RFC</b></label>'+
-            '<input type="text" class="form-control" name="rfc" id="rfc" placeholder="RFC">'+
+          '<label><b>Modelo</b></label>'+
+          '<select class="form-control" name="modelo" id="modelo"></select>'+
       '</div>'+
     '</div>'+
     '<div class="col-12">'+
           '<div class="form-group">'+
-          '<label><b>Correo</b></label>'+
-          '<input type="text" class="form-control m-auto" name="correo" id="correo" placeholder="Correo">'+
+          '<label><b>Transmición</b></label>'+
+          '<select type="text" class="form-control m-auto" name="motor" id="motor"></select>'+
       '</div>'+
     '</div>'+
   
@@ -98,7 +98,7 @@ function agregarModelo() {
       '<div class="row  mt-1">'+
       '<div class="col-12">'+
       '<div class="form-group" id="area-solucion">'+
-      '<label><b>Dirección</b></label>'+
+      '<label><b>Comentarios</b></label>'+
       '<textarea class="form-control" style="height:100px" name="direccion" id="direccion" form="formulario-editar-registro" placeholder="Escriba la dirección del producto"></textarea>'+
       '</div>'+
       '</div>'+
