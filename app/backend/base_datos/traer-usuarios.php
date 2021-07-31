@@ -12,20 +12,24 @@ if (!isset($_SESSION['id'])) {
 if (isset($_POST)) {
        
     
-    $query="SELECT * FROM modelos_2021";
+    $query="SELECT * FROM usuarios";
 
     $resultado = mysqli_query($con, $query);
 
     while($fila = $resultado->fetch_assoc()){
     $id= $fila["id"];
    // $codigo = $fila["codigo"];
-    $modelo = $fila["modelo"];
-    $marca = $fila["marca"];
-    $año = $fila["año"];
+    $nombre = $fila["nombre"];
+    $usuario = $fila["usuario"];
+    $contraseña = sha1($fila["contraseña"]);
+    $fecha = $fila["fecha"];
+    $rol = $fila["rol"];
+    $sucursal = $fila["sucursal"];
+    $puesto = $fila["puesto"];
    // $transmicion = $fila["transmicion"];
 
-    $data["data"][] = array("id" => $id, /* "codigo"=>$codigo, */ "modelo" => $modelo,
-                    "marca"=>$marca, "año"=>$año/*  "transmicion"=>$transmicion */);
+    $data["data"][] = array("id" => $id, "nombre" => $nombre,
+                    "usuario"=>$usuario, "contraseña"=>$contraseña,"fecha"=>$fecha, "rol"=> $rol, "sucursal"=>$sucursal, "puesto"=>$puesto);
 
                   
 }

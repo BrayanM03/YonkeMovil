@@ -18,7 +18,7 @@
     $rows= $query_mostrar->num_rows();
 
     if ($rows > 0 ) {
-        $query_mostrar->bind_result($id, $nombre, $user, $pass, $date, $rol, $sucursal, $puesto);
+        $query_mostrar->bind_result($id, $nombre, $user, $pass, $date, $rol, $sucursal, $id_sucursal, $puesto);
         $query_mostrar->fetch();
         $validar_pass = password_verify($password, $pass);
         if ($validar_pass) {
@@ -31,6 +31,7 @@
             $_SESSION['fecha'] = $date;
             $_SESSION['rol'] = $rol;
             $_SESSION['sucursal'] = $sucursal;
+            $_SESSION['id_sucursal'] = $id_sucursal;
             $_SESSION['puesto'] = $puesto;
 
 

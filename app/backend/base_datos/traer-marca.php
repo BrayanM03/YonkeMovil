@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     include '../login/conexion.php';
     $con= $conectando->conexion();
 

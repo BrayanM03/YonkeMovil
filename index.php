@@ -11,7 +11,7 @@ include 'app/backend/login/conexion.php';
  }
 
  if($_SESSION["rol"] != 1){
-    header("Location:login.php");
+    header("Location:mis-partes.php");
     die();
  }else{
 
