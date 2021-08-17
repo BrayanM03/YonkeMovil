@@ -11,7 +11,7 @@ if (!isset($_SESSION['id'])) {
 
 if (isset($_POST)) {
        
-    $id_user = $_POST["id"];
+    $id_user = $_POST["id_user"];
     $query="SELECT * FROM usuarios WHERE id = '$id_user'";
 
     $resultado = mysqli_query($con, $query);
@@ -24,12 +24,12 @@ if (isset($_POST)) {
     $contraseña = sha1($fila["contraseña"]);
     $fecha = $fila["fecha"];
     $rol = $fila["rol"];
-    $sucursal = $fila["sucursal"];
+   // $sucursal = $fila["sucursal"];
     $puesto = $fila["puesto"];
    // $transmicion = $fila["transmicion"];
 
-    $data["data"][] = array("id" => $id, "nombre" => $nombre,
-                    "usuario"=>$usuario, "contraseña"=>$contraseña,"fecha"=>$fecha, "rol"=> $rol, "sucursal"=>$sucursal, "puesto"=>$puesto);
+    $data= array("id" => $id, "nombre" => $nombre,
+                    "usuario"=>$usuario, "contraseña"=>$contraseña,"fecha"=>$fecha, "rol"=> $rol, "puesto"=>$puesto);
 
                   
 }

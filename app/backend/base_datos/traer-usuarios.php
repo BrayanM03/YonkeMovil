@@ -21,15 +21,15 @@ if (isset($_POST)) {
    // $codigo = $fila["codigo"];
     $nombre = $fila["nombre"];
     $usuario = $fila["usuario"];
-    $contraseña = sha1($fila["contraseña"]);
+    $contraseña = $fila["contraseña"];
     $fecha = $fila["fecha"];
     $rol = $fila["rol"];
-    $sucursal = $fila["sucursal"];
+ //   $sucursal = $fila["sucursal"];
     $puesto = $fila["puesto"];
    // $transmicion = $fila["transmicion"];
 
     $data["data"][] = array("id" => $id, "nombre" => $nombre,
-                    "usuario"=>$usuario, "contraseña"=>$contraseña,"fecha"=>$fecha, "rol"=> $rol, "sucursal"=>$sucursal, "puesto"=>$puesto);
+                    "usuario"=>$usuario, "contraseña"=>$contraseña,"fecha"=>$fecha, "rol"=> $rol, "puesto"=>$puesto);
 
                   
 }

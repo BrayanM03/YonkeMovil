@@ -38,15 +38,6 @@ $con= $conectando->conexion();
              }
            }
 
-
-
-
-
-
-
-
-
-
 }
 
 ?>
