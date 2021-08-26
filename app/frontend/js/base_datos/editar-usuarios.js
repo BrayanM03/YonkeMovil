@@ -1,5 +1,27 @@
+//opciones de las alertas
+toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-bottom-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
 
-    id_usuario = $("#usuario").attr("this_id_user");
+
+  //Traer información y plantarla en el cliente
+id_usuario = $("#usuario").attr("this_id_user");
+contador = 1;
+nuevoToken = Math.floor((Math.random() * (9999 - 1000) + 1000));
 
     $.ajax({
         type: "POST",
@@ -7,13 +29,20 @@
         data: {"id_user": id_usuario},
         dataType: "JSON",
         success: function (response) {
-            console.log(response);
+        
             $("#nombre").val(response.nombre);
             $("#usuario").val(response.usuario);
+            $("#puesto").val(response.puesto);
+            $("#rol").val(response.rol);
+            $(".foto-perfil").attr("id", response.id);
+            $(".foto-perfil").css("background-image", "url('./app/frontend/img/pp/"+ response.usuario +".jpg?"+ nuevoToken +".0.0')")
             //$("#nombre").val(response.nombre);
             
         }
     });
+
+
+//Funciones para validar    
 
 function mostrarPassword(){
 
@@ -83,6 +112,7 @@ function mostrarPassword(){
     
             }else{
                 $("#usuario").addClass("is-valid");
+                $("#usuario").attr("validar", "valid");
             }
         }
 
@@ -281,7 +311,8 @@ function mostrarPassword(){
             
                 //Resizar imagen
                 var porcentajeResizado = 0.1;//Se usa para scalar la imagen sin perder el aspect ratio
-                canvas.onmousewheel = (event)=>{
+
+                canvas.addEventListener("wheel", function(event){
                     if(event.deltaY == 100)
                     {
                         //console.log('para abajo')
@@ -311,20 +342,15 @@ function mostrarPassword(){
                         context.fillRect(0, 0, canvas.width, canvas.height);
                         context.drawImage(imagen, px, py, sx, sy);
                         //console.log('para arriba');
+                       console.log("evente Y: "+ event.deltaY);
+                       console.log("evente X: "+ event.deltaX);
                     }
                     //console.log(event);
-                }
+                }, false);
             
                 
             }
-
-            function mostrarResultado(){
-                var imagenAMostrar = document.getElementById('imagenMostrada');
-                canvas.toBlob((blob)=>{
-                    imagenAMostrar.setAttribute('src', URL.createObjectURL(blob));
-                    imagenAMostrar.style.display = 'block';
-                })
-            }
+            
             
   
          },
@@ -333,13 +359,191 @@ function mostrarPassword(){
       }).then((result) => {
 
         if (result.isConfirmed) {
-            var imagenAMostrar = document.getElementById('imagenMostrada');
+            
+           var id_user = $(".foto-perfil").attr("id");
+
             canvas.toBlob((blob)=>{
-                imagenAMostrar.setAttribute('src', URL.createObjectURL(blob));
-                imagenAMostrar.style.display = 'block';
+                ruta = URL.createObjectURL(blob);
+                var dataURL = canvas.toDataURL();
+                
+              /*   imagenAMostrar.setAttribute('src', URL.createObjectURL(blob));
+                imagenAMostrar.style.display = 'block'; */
+                
+                $.ajax({
+                    type: "POST",
+                    url: "./app/backend/base_datos/cambiar-foto-perfil.php",
+                    data: {"imgBase64": dataURL, "id_user": id_user},
+                   
+                    success: function (response) {
+                       
+                        contador = contador + 1;   
+                          
+                        $(".foto-perfil").css("background-image", "url('./app/frontend/img/pp/"+ response +".jpg?1."+ contador +".0')")
+                        Swal.fire(
+                            "¡Correcto!",
+                            "Se actualizó foto de perfil",
+                            "success"
+                            )
+                    }
+                });
             })
         }
       
    });
 
 }
+
+
+//Actualizar datos usuarios
+function updateinfo(tipo) { 
+    var id_user = $(".foto-perfil").attr("id");
+
+    switch (tipo) {
+            
+            case "nombre":
+            nombre = $("#nombre").val();
+            enviarData(tipo, nombre);
+            break;
+
+            case "usuario":
+            usuario = $("#usuario").val();
+            validacion = $("#usuario").hasClass("is-valid");
+            console.log(validacion);
+            if (validacion == true) {
+                enviarData(tipo, usuario);
+            }else if (validacion == false) {
+                toastr.error('Información invalida', 'Error'); 
+            }else{
+                enviarData(tipo, usuario); 
+            }
+            break;    
+            case "contraseña":
+            contraseña = $("#contraseña").val();
+            enviarData(tipo, contraseña);
+            break;
+
+            case "puesto":
+            puesto = $("#puesto").val();
+            enviarData(tipo, puesto);    
+            break;
+
+            case "rol":
+            rol = $("#rol").val();
+            enviarData(tipo, rol);        
+            break;
+
+        default:
+            console.log("Tipo de dato desconocido");
+            break;
+    }
+
+    function enviarData(tipo, dato) { 
+        $.ajax({
+            type: "POST",
+            url: "./app/backend/base_datos/update-info-users.php",
+            data: {"campo": tipo, "dato": dato, "id_user": id_user},
+            //dataType: "dataType",
+            success: function (response) {
+                if (response ==1) {
+                    toastr.success('Actualizado correctamente', 'Correcto');   
+                }
+            }
+        });
+     }
+
+ }
+
+ //Asignar yonke
+
+ function asignarYonke(opcion){
+
+    if($("#rol").val() == 1 || $("#rol").val() == 3){
+      $("#buscador-yonke").empty(); 
+      $("#new-guardar").empty();
+    }else{
+
+      $("#buscador-yonke").empty();
+      $("#buscador-yonke").append('<label><b>Asignar Yonke:</b></label>'+
+      '<select class="form-control" id="buscar-yonke"  name="yonkes[]" multiple="multiple"></select>');
+
+      $("#new-guardar").append('<div class="btn btn-success btn-sm">Guardar</div>');
+ 
+      $("#buscar-yonke").select2({
+       placeholder: "Busca un yonke...",
+       theme: "bootstrap",
+       minimumInputLength: 0,
+       ajax: {
+           url: "./app/backend/base_datos/buscar-yonke.php",
+           type: "post",
+           dataType: 'json',
+           delay: 250,
+ 
+           data: function (params) {
+            return {
+              searchTerm: params.term // search term
+ 
+            };
+           },
+           processResults: function (data) {
+               return {
+                  results: data
+               };
+             },
+ 
+           cache: true
+ 
+       },
+       language:  {
+ 
+           inputTooShort: function () {
+               return "Busca una yonke...";
+             },
+ 
+           noResults: function() {
+ 
+             return "Sin resultados";
+           },
+           searching: function() {
+ 
+             return "Buscando..";
+           }
+         },
+ 
+         templateResult: formatRepoS,
+         templateSelection: formatRepoSelectionS
+   });
+ 
+   function formatRepoS (repo) {
+ 
+       if (repo.loading) {
+         return repo.text;
+       }
+ 
+ 
+ 
+ var $container = $(
+  "<div style='' class='select2-result-repository clearfix'>" +
+  "<div style='width:100%;'><span style='margin-left:10px;'>" + repo.nombre +"</span> </div>"+
+  "</div>"
+ );
+ 
+ 
+ 
+         return $container;
+       }
+ 
+ function formatRepoSelectionS  (repo) {
+ 
+         $("#buscador-yonke").attr("yonke", repo.nombre);
+         $("#buscador-yonke").attr("yonke_id", repo.id);
+         return repo.text || repo.nombre;
+       }
+ 
+      
+   
+
+    }
+     
+
+  }
+

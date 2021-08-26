@@ -36,6 +36,10 @@ include 'app/backend/login/conexion.php';
       <meta name="description" content="CodedThemes">
       <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
       <meta name="author" content="CodedThemes">
+      <meta http-equiv="Expires" content="0">
+      <meta http-equiv="Last-Modified" content="0">
+      <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+      <meta http-equiv="Pragma" content="no-cache">
       <!-- Favicon icon -->
       <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
       <!-- Google font-->
@@ -60,6 +64,8 @@ include 'app/backend/login/conexion.php';
      <link rel="stylesheet" type="text/css" href="app/frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
      <link rel="stylesheet" href="app/frontend/node_modules/select2-bootstrap-theme/dist/select2-bootstrap.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" />
+
 
         
    <!--      <link rel="stylesheet" type="text/css" href="app/frontend/node_modules/datatables.net-bs4/css/dataTables.bootstrap5.min.css"> 
@@ -391,7 +397,7 @@ include 'app/backend/login/conexion.php';
                                                                     <input type="text" id="nombre" class="form-control" placeholder="Nombre completo">
                                                                 </div>
                                                                 <div class="col-3 mt-4">
-                                                                    <div class="btn btn-success btn-sm">Guardar</div>
+                                                                    <div class="btn btn-success btn-sm" onclick="updateinfo('nombre');">Guardar</div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-3">
@@ -401,7 +407,7 @@ include 'app/backend/login/conexion.php';
                                                                     <div class="invalid-feedback">Ya existe un usuario con ese nombre.</div>
                                                                 </div>
                                                                 <div class="col-3 mt-4">
-                                                                    <div class="btn btn-success btn-sm">Guardar</div>
+                                                                    <div class="btn btn-success btn-sm" onclick="updateinfo('usuario');">Guardar</div>
                                                                 </div>
                                                             </div>
                                                             
@@ -417,10 +423,46 @@ include 'app/backend/login/conexion.php';
                                                                     <div class="invalid-feedback" id="feedback-pass"></div>
                                                                 </div>
                                                                 <div class="col-3 mt-4">
-                                                                    <div class="btn btn-success btn-sm">Guardar</div>
+                                                                    <div class="btn btn-success btn-sm" onclick="updateinfo('contraseña');">Guardar</div> 
+                                                                </div>
+                                                                
+                                                            </div>
+
+                                                            <div class="row mt-2">
+                                                                <div class="col-8 col-md-8">
+                                                                    <label for=""><b>Puesto: </b></label>
+                                                                    <input type="text" id="puesto" class="form-control" placeholder="Escribe un puesto">
+                                                                  
+                                                                </div>
+                                                                <div class="col-3 mt-4">
+                                                                    <div class="btn btn-success btn-sm" onclick="updateinfo('puesto');">Guardar</div>
                                                                 </div>
                                                             </div>
 
+                                                            <div class="row mt-2">
+                                                                <div class="col-8 col-md-8">
+                                                                    <label for=""><b>Rol: </b></label>
+
+                                                                    <select type="text" onchange="asignarYonke(this);" id="rol" class="form-control">
+                                                                       <option value="1">Administrador</option> 
+                                                                       <option value="2">Usuario de yonke</option>
+                                                                       <option value="3">Usuario normal</option>
+                                                                    </select>
+
+                                                                </div>
+                                                                <div class="col-3 mt-4">
+                                                                    <div class="btn btn-success btn-sm" onclick="updateinfo('rol');">Guardar</div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mt-2">
+                                                            <div class="col-8 col-md-8">
+                                                                <div class="form-group" id="buscador-yonke"></div>
+                                                            </div>
+                                                            <div class="col-3 mt-4" id="new-guardar">
+                                                                   
+                                                                </div>
+                                                            </div>
 
                                                         </form>
                                                     </div>
@@ -532,6 +574,9 @@ include 'app/backend/login/conexion.php';
 <script src="app/frontend/node_modules/datatables.net-bs4/js/dataTables.bootstrap5.min.js"></script>
 <script src="app/frontend/node_modules/datatables.net-bs4/js/responsive.bootstrap5.min.js"></script> -->
 <script src="app/frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>t>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous"></script>
+   
+
 
 <script src="app/frontend/js/base_datos/editar-usuarios.js"></script>
 <script>

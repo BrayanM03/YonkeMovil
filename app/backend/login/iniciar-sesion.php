@@ -17,8 +17,14 @@
     $query_mostrar->store_result();    
     $rows= $query_mostrar->num_rows();
 
+
+
+
+
+
+
     if ($rows > 0 ) {
-        $query_mostrar->bind_result($id, $nombre, $user, $pass, $date, $rol, $puesto);
+        $query_mostrar->bind_result($id, $nombre, $user, $pass, $date, $rol,$sucursal, $puesto);
         $query_mostrar->fetch();
         $validar_pass = password_verify($password, $pass);
         if ($validar_pass) {
@@ -31,6 +37,7 @@
             $_SESSION['fecha'] = $date;
             $_SESSION['rol'] = $rol;
             $_SESSION['puesto'] = $puesto;
+            $_SESSION['sucursal'] = $sucursal;
 
 
             print_r(1); //credenciales validas
