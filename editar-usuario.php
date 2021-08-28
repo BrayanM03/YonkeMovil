@@ -573,7 +573,7 @@ include 'app/backend/login/conexion.php';
 <!-- <script src="app/frontend/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="app/frontend/node_modules/datatables.net-bs4/js/dataTables.bootstrap5.min.js"></script>
 <script src="app/frontend/node_modules/datatables.net-bs4/js/responsive.bootstrap5.min.js"></script> -->
-<script src="app/frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>t>
+<script src="app/frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous"></script>
    
 

@@ -28,8 +28,15 @@
     <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
     <!---Librerias---->
     <link rel="stylesheet" type="text/css" href="app/frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="app/frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+   <!--  <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+   <style>
+       body{
+        background-color: #e22f22;
+       }
+   </style>
 </head>
 
 <body class="fix-menu">
@@ -52,66 +59,27 @@
 </div>
     <!-- Pre-loader end -->
 
-    <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+    <section class="text-center mt-5" style="background-color: #e22f22; height:88vh;">
         <!-- Container-fluid starts -->
-        <div class="container">
+        <div class="container d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-12 col-md-12">
                     <!-- Authentication card start -->
-                    <div class="login-card card-block auth-body mr-auto ml-auto">
-                        <form class="md-float-material">
-                            <div class="text-center">
-                                <img src="assets/images/logo.png" style="width: 150px; margin: auto;" alt="logo.png">
+                      
+                            <div class="text-center" style="width: 350px;">
+                                <img src="assets/images/logo.png" style="width: 150px; margin: auto;" alt="logo.png"></br>
+                                <span style="color: yellow;"><b>¡Tus piezas al instante!</b></span>
                             </div>
-                            <div class="auth-box">
-                                <div class="row m-b-20">
-                                    <div class="col-md-12">
-                                        <h3 class="text-left txt-primary">Iniciar sesión</h3>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="username" placeholder="Usuario">
-                                    <span class="md-line"></span>
-                                </div>
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="password" placeholder="Contraseña sadfsafdsa">
-                                    <span class="md-line"></span>
-                                </div>
-                                <div class="row m-t-25 text-left">
-                                    <div class="col-sm-7 col-xs-12">
-                                        <div class="checkbox-fade fade-in-primary">
-                                            <label>
-                                                <input type="checkbox" value="">
-                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                <span class="text-inverse">Recuerdame</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                        <a href="auth-reset-password.html" class="text-right f-w-600 text-inverse">¿Olvidaste tu contraseña?</a>
-                                    </div>
-                                </div>
-                                <div class="row m-t-30">
-                                    <div class="col-md-12">
-                                        <div type="button" onclick="iniciarSesion();" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Iniciar sesión</div>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p class="text-inverse text-left m-b-0"><b>Entra al sistema.</b></p>
-                                        <p class="text-inverse text-left">Yonkemovil 2021</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="assets/images/logo.png" style="width:60px; margin-rigth: 40px;" alt="small-logo.png">
-                                    </div>
-                                </div>
-
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" style="border-radius: 7px;" id="username" placeholder="Usuario">
+                                <div class="input-group  mt-3">
+                                <input type="password" class="form-control" style="border-radius: 7px 0px 0px 7px;" id="password" placeholder="Contraseña">
+                                <button id="show_password"  style="border-radius: 0px 7px 7px 0px;" class="btn btn-primary btn-sm" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
+                                </div>                                
+                                <div class="btn btn-warning text-dark mt-3" style="border-radius: 7px;" onclick="iniciarSesion();">Iniciar Sesión</div>
                             </div>
-                        </form>
-                        <!-- end of form -->
-                    </div>
+                        
+                   
                     <!-- Authentication card end -->
                 </div>
                 <!-- end of col-sm-12 -->
@@ -119,7 +87,17 @@
             <!-- end of row -->
         </div>
         <!-- end of container-fluid -->
+
+        
+
     </section>
+    <footer class="sticky-footer" style="color:antiquewhite;">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; YonkeMovil  <?php print_r(date("Y")) ?></span><br><br>
+                    </div>
+                </div>
+    </footer>
     <!-- Warning Section Starts -->
     <!-- Older IE warning message -->
     <!--[if lt IE 9]>
@@ -171,6 +149,8 @@
     <script type="text/javascript" src="assets/js/bootstrap/js/bootstrap.min.js"></script>
     <!-- jquery slimscroll js -->
     <script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+    
+<script src="app/frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
     <!-- modernizr js -->
     <script type="text/javascript" src="assets/js/modernizr/modernizr.js"></script>
     <script type="text/javascript" src="assets/js/modernizr/css-scrollbars.js"></script>
