@@ -19,16 +19,21 @@ include 'backend/login/conexion.php';
   <head>
     <meta charset="UTF-8">
     <title> Responsive Sidebar Menu  | CodingLab </title>
-    <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
-    <link rel="stylesheet" href="frontend/css/style-navbar.css">
     <link rel="icon" href="frontend/recursos/icon/favicon.ico" type="image/x-icon">
-    <!-- Boxicons CDN Link -->
+
+    <!-- Librerias de terceros -->
+    <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="frontend/css/style-navbar.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <div class="sidebar">
+
+<div class="sidebar">
     <div class="logo-details">
      <!--  <i class='bx bxl-c-plus-plus icon'></i> -->
         <img class="logo_img" src="frontend/recursos/img/YonkeMovil_logo_back.png" alt="">
@@ -72,7 +77,7 @@ include 'backend/login/conexion.php';
      </li>
      <li class="list-item">
        <a href="#collapse-inv" class="collapsible">
-         <i class='bx bx-folder' ></i>
+         <i class='bx bx-folder'></i>
          <span class="links_name">Inventario</span>
        </a>
        <div id="collapse-inv" class="content-collapse">
@@ -130,22 +135,40 @@ include 'backend/login/conexion.php';
   </div>
   <section class="home-section">
 
-  
+  <div class="contenedor-principal m-3">
+    <div class="row">
+        <div class="col-12 col-md-12 text-center mt-3">
+            <h4>Usuarios del sistema</h4>
+            <p>Estos son los usuarios que se han registrado en la aplicacion</p>
+        </div>  
+      </div>
+      <div class="row justify-content-center">
+          <div class="col-12 col-md-10 p-3">
+          <table width="80%" class="table table-striped table-hover dt-responsive display nowrap" cellspacing="0" id="tabla-usuarios" style="background-color: white;"></table>
+          </div>
+      </div>
+  </div>
 
-      <div class="text">Bienvenido <?php echo $_SESSION['nombre']; ?></div>
   </section>
 
+    <!----Libreroas de terceros----->
 
     <script type="text/javascript" src="frontend/node_modules/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="frontend/node_modules/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="frontend/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- jquery slimscroll js -->
     <script src="frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
 
 
     <!----Mis librerias----->
-    <script src="frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
   <script src="frontend/js/script-navbar.js"></script>
+  <script src="frontend/js/usuarios/usuarios.js"></script>
+  
+
 
 </body>
 </html>

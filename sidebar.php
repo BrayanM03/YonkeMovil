@@ -1,34 +1,5 @@
-<?php
 
-include 'backend/login/conexion.php';
- $con = $conectando->conexion();
-
- session_start();
-
- if(empty($_SESSION["id"])){
-    header("Location:login.php");
-    die();
- }
-
- 
-
-?>
-<!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
-<html lang="es" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> Responsive Sidebar Menu  | CodingLab </title>
-    <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
-    <link rel="stylesheet" href="frontend/css/style-navbar.css">
-    <link rel="icon" href="frontend/recursos/icon/favicon.ico" type="image/x-icon">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
-  <div class="sidebar">
+<div class="sidebar">
     <div class="logo-details">
      <!--  <i class='bx bxl-c-plus-plus icon'></i> -->
         <img class="logo_img" src="frontend/recursos/img/YonkeMovil_logo_back.png" alt="">
@@ -128,24 +99,3 @@ include 'backend/login/conexion.php';
      </li>
     </ul>
   </div>
-  <section class="home-section">
-
-  
-
-      <div class="text">Bienvenido <?php echo $_SESSION['nombre']; ?></div>
-  </section>
-
-
-    <script type="text/javascript" src="frontend/node_modules/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="frontend/node_modules/jquery-ui/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="frontend/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- jquery slimscroll js -->
-    <script src="frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
-
-
-    <!----Mis librerias----->
-    <script src="frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-  <script src="frontend/js/script-navbar.js"></script>
-
-</body>
-</html>

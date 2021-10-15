@@ -6,7 +6,7 @@ function MostrarUsuarios() {
     serverSide: false,
     ajax: {
         method: "POST",
-        url: "./app/backend/base_datos/traer-usuarios.php",
+        url: "./backend/usuarios/traer-usuarios.php",
         dataType: "json"
  
     },  
@@ -15,7 +15,7 @@ function MostrarUsuarios() {
     { title: "#",              data: null             },
     { title: "Nombre",          data: "nombre" , width: "20%"},
     { title: "Usuario",         data: "usuario" },
-    { title: "Contraseña",            data: "contraseña"},
+    /* { title: "Contraseña",            data: "contraseña"}, */
     { title: "fecha",            data: "fecha"},
     { title: "rol",            data: "rol"},
    // { title: "sucursal",            data: "sucursal"},
@@ -59,7 +59,8 @@ function MostrarUsuarios() {
   
 });
 
-$("table.dataTable thead").addClass("table-info")
+$("table.dataTable thead").css("background-color", "#1D1B31");
+$("table.dataTable thead").css("color", "white");
 
  //Enumerar las filas "index column"
  table.on( 'order.dt search.dt', function () {
