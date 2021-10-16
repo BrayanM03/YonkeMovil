@@ -5,7 +5,7 @@ include '../login/conexion.php';
 $con = $conectando->conexion();
 
 if (!isset($_SESSION['id'])) {
-    header("Location:../../../login.php");
+    header("Location:../../login.php");
 }
 
 //Recibimos la data 64 de la imagen
@@ -36,7 +36,7 @@ if (!$decode) {
     $validar_comp->fetch();
     $validar_comp->close();
 
-    $ruta = "../../frontend/img/pp/". $usernamepp .".jpg";
+    $ruta = "../../frontend/recursos/img/pp/". $usernamepp .".jpg";
     file_put_contents($ruta, $decode);
     print_r($usernamepp);
 

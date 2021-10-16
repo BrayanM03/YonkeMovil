@@ -317,7 +317,7 @@ function agregarUsuario() {
 
                   $.ajax({
                     type: "POST",
-                    url: "./app/backend/base_datos/validar-usuarios.php", 
+                    url: "./backend/usuarios/validar-usuarios.php", 
                     data:{"usuario": usuario_validar},
                   
                     success: function(response) {
@@ -446,7 +446,7 @@ function agregarUsuario() {
   
       $.ajax({
         type: "POST",
-        url: "./app/backend/base_datos/agregar-nuevo-usuario.php",
+        url: "./backend/usuarios/agregar-nuevo-usuario.php",
         data:{"nombre": nombre_usuario, "usuario": username, "contraseña": pass_usuario, "rol": rol_usuario, "puesto": puesto_usuario, "yonkes" : yonkes_escogidos},
         success: function(response) {
           if (response==1) {

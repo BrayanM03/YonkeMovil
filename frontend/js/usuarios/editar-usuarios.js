@@ -20,12 +20,12 @@ toastr.options = {
 
   //Traer información y plantarla en el cliente
 id_usuario = $("#usuario").attr("this_id_user");
-contador = 1;
+contador = 1; 
 nuevoToken = Math.floor((Math.random() * (9999 - 1000) + 1000));
 
     $.ajax({
         type: "POST",
-        url: "./app/backend/base_datos/traer-info-usuario.php",
+        url: "./backend/usuarios/traer-info-usuario.php",
         data: {"id_user": id_usuario},
         dataType: "JSON",
         success: function (response) {
@@ -35,7 +35,7 @@ nuevoToken = Math.floor((Math.random() * (9999 - 1000) + 1000));
             $("#puesto").val(response.puesto);
             $("#rol").val(response.rol);
             $(".foto-perfil").attr("id", response.id);
-            $(".foto-perfil").css("background-image", "url('./app/frontend/img/pp/"+ response.usuario +".jpg?"+ nuevoToken +".0.0')")
+            $(".foto-perfil").css("background-image", "url('./frontend/recursos/img/pp/"+ response.usuario +".jpg?"+ nuevoToken +".0.0')")
             //$("#nombre").val(response.nombre);
             
         }
@@ -64,7 +64,7 @@ function mostrarPassword(){
  
     $.ajax({
       type: "POST",
-      url: "./app/backend/base_datos/validar-usuarios-agregado.php", 
+      url: "./backend/usuarios/validar-usuarios-agregado.php", 
       data:{"usuario": usuario_validar, "this_user": id_usuario},
     
       success: function(response) {
@@ -371,14 +371,14 @@ function mostrarPassword(){
                 
                 $.ajax({
                     type: "POST",
-                    url: "./app/backend/base_datos/cambiar-foto-perfil.php",
+                    url: "./backend/usuarios/cambiar-foto-perfil.php",
                     data: {"imgBase64": dataURL, "id_user": id_user},
                    
                     success: function (response) {
                        
                         contador = contador + 1;   
                           
-                        $(".foto-perfil").css("background-image", "url('./app/frontend/img/pp/"+ response +".jpg?1."+ contador +".0')")
+                        $(".foto-perfil").css("background-image", "url('./frontend/recursos/img/pp/"+ response +".jpg?1."+ contador +".0')")
                         Swal.fire(
                             "¡Correcto!",
                             "Se actualizó foto de perfil",
@@ -440,7 +440,7 @@ function updateinfo(tipo) {
     function enviarData(tipo, dato) { 
         $.ajax({
             type: "POST",
-            url: "./app/backend/base_datos/update-info-users.php",
+            url: "./backend/usuarios/update-info-users.php",
             data: {"campo": tipo, "dato": dato, "id_user": id_user},
             //dataType: "dataType",
             success: function (response) {
@@ -473,7 +473,7 @@ function updateinfo(tipo) {
        theme: "bootstrap",
        minimumInputLength: 0,
        ajax: {
-           url: "./app/backend/base_datos/buscar-yonke.php",
+           url: "./backend/usuarios/buscar-yonke.php",
            type: "post",
            dataType: 'json',
            delay: 250,

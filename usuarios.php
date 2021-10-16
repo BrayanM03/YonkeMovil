@@ -23,6 +23,7 @@ include 'backend/login/conexion.php';
 
     <!-- Librerias de terceros -->
     <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -139,8 +140,13 @@ include 'backend/login/conexion.php';
     <div class="row">
         <div class="col-12 col-md-12 text-center mt-3">
             <h4>Usuarios del sistema</h4>
-            <p>Estos son los usuarios que se han registrado en la aplicacion</p>
+            <p>Estos son los usuarios que se han registrado en la aplicación</p>
         </div>  
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 p-3">
+          <div class="btn btn-danger" onclick="agregarUsuario()">Agregar usuario</div>
+        </div>
       </div>
       <div class="row justify-content-center">
           <div class="col-12 col-md-10 p-3">

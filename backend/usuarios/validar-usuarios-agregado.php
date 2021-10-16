@@ -10,7 +10,7 @@ $con= $conectando->conexion();
     }
 
     if (!isset($_SESSION['username'])) {
-    header("Location:../../../login.php");
+    header("Location:../../login.php");
     }
 
 

@@ -5,7 +5,7 @@ include '../login/conexion.php';
 $con= $conectando->conexion(); 
 
 if (!isset($_SESSION['id'])) {
-    header("Location:../../../login.php");
+    header("Location:../../login.php");
 }
 
 
