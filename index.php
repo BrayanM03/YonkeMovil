@@ -10,6 +10,11 @@ include 'backend/login/conexion.php';
     die();
  }
 
+ if($_SESSION["rol"] == 3){
+  header("Location:panel_cliente.php");
+  
+ }
+
  
 
 ?>
@@ -28,7 +33,7 @@ include 'backend/login/conexion.php';
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <div class="sidebar">
+<div class="sidebar">
     <div class="logo-details">
      <!--  <i class='bx bxl-c-plus-plus icon'></i> -->
         <img class="logo_img" src="frontend/recursos/img/YonkeMovil_logo_back.png" alt="">
@@ -42,7 +47,7 @@ include 'backend/login/conexion.php';
          <span class="tooltip">Buscar</span>
       </li>
       <li class="list-item">
-        <a href="#">
+        <a href="index.php">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Panel</span>
         </a>
@@ -50,21 +55,21 @@ include 'backend/login/conexion.php';
       </li>
      
      <li class="list-item">
-       <a href="#">
+       <a href="yonkes.php">
          <i class='bx bx-store' ></i>
          <span class="links_name">Yonkes</span>
        </a>
        <span class="tooltip">Yonkes</span>
      </li>
      <li class="list-item">
-       <a href="#">
+       <a href="talleres.php">
          <i class='bx bx-wrench' ></i>
          <span class="links_name">Talleres</span>
        </a>
        <span class="tooltip">Talleres</span>
      </li>
      <li class="list-item">
-       <a href="#">
+       <a href="mapa.php">
          <i class='bx bx-flag' ></i>
          <span class="links_name">Mapa</span>
        </a>
@@ -72,20 +77,20 @@ include 'backend/login/conexion.php';
      </li>
      <li class="list-item">
        <a href="#collapse-inv" class="collapsible">
-         <i class='bx bx-folder' ></i>
+         <i class='bx bx-folder'></i>
          <span class="links_name">Inventario</span>
        </a>
        <div id="collapse-inv" class="content-collapse">
        <ul>
        <li class="list-item">
-       <a href="#">
+       <a href="mis-vehiculos.php">
          <i class='bx bx-car' ></i>
          <span class="links_name">Vehiculos</span>
        </a>
        <span class="tooltip">Vehiculos</span>
      </li>
      <li class="list-item">
-       <a href="#">
+       <a href="mis-partes.php">
          <i class='bx bx-car' ></i>
          <span class="links_name">Partes</span>
        </a>
@@ -108,7 +113,7 @@ include 'backend/login/conexion.php';
      
     
      <li class="list-item" style="margin-bottom: 40%;">
-       <a href="#">
+       <a href="configuraciones.php">
          <i class='bx bx-cog' ></i>
          <span class="links_name">Configuraciones</span>
        </a>
@@ -121,10 +126,10 @@ include 'backend/login/conexion.php';
            <img src="frontend/recursos/img/pp/<?php echo $_SESSION["username"] ?>.jpg" alt="profileImg">
            <div class="name_job">
              <div class="name"><?php echo $_SESSION['nombre']; ?></div>
-             <div class="job">Desarrollador web</div>
+             <div class="job"><?php echo $_SESSION['puesto']; ?></div>
            </div>
          </div>
-         <i class='bx bx-log-out' id="log_out" ></i>
+         <a href="backend/login/cerrar-sesion.php"><i class='bx bx-log-out' id="log_out" ></i></a>
      </li>
     </ul>
   </div>

@@ -134,23 +134,24 @@ include 'backend/login/conexion.php';
      </li>
     </ul>
   </div>
+
   <section class="home-section">
 
   <div class="contenedor-principal m-3">
     <div class="row">
         <div class="col-12 col-md-12 text-center mt-3">
-            <h4>Usuarios del sistema</h4>
-            <p>Estos son los usuarios que se han registrado en la aplicación</p>
+            <h4>Yonkes registrados</h4>
+            <p>Estos son los yonkes que se han registrado en la aplicación</p>
         </div>  
       </div>
       <div class="row justify-content-center">
         <div class="col-12 col-md-10 p-3">
-          <div class="btn btn-danger" onclick="agregarUsuario()">Agregar usuario</div>
+          <div class="btn btn-danger" onclick="agregarYonke()">Agregar Yonke</div>
         </div>
       </div>
       <div class="row justify-content-center">
           <div class="col-12 col-md-10 p-3">
-          <table width="80%" class="table table-striped table-hover dt-responsive display nowrap" cellspacing="0" id="tabla-usuarios" style="background-color: white;"></table>
+          <table width="80%" class="table table-striped table-hover dt-responsive display nowrap" cellspacing="0" id="tabla-yonkes" style="background-color: white;"></table>
           </div>
       </div>
   </div>
@@ -172,7 +173,7 @@ include 'backend/login/conexion.php';
 
     <!----Mis librerias----->
   <script src="frontend/js/script-navbar.js"></script>
-  <script src="frontend/js/usuarios/usuarios.js"></script>
+  <script src="frontend/js/yonkes/yonkes.js"></script>
   
 
 

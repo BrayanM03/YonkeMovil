@@ -12,7 +12,7 @@ function iniciarSesion() {
 
     success: function (response) {
         if(response ==1){
-            window.location = "./index.php";;
+            window.location = "./index.php";
         }else if(response ==0){
             Swal.fire(
                 "¡Contraseña erronea!",

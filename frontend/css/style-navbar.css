@@ -7,10 +7,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
+  
 }
 .sidebar{
   position: fixed;
-  
   left: 0;
   top: 0;
   height: 100%;
@@ -282,10 +282,22 @@
   line-height: 60px;
   border-radius: 0px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 .sidebar.open .profile #log_out{
   width: 50px;
   background: none;
+  cursor: pointer;
+}
+
+.sidebar .profile #log_out:hover{
+  background-color: red;
+  
+}
+
+.sidebar.open .profile #log_out:hover{
+  background-color: red;
+  
 }
 
 body{
@@ -293,19 +305,22 @@ body{
   background: #E4E9F7;
 }
 .home-section{
-  position: absolute;
+  position: fixed;
   background: #E4E9F7;
+ /*  background-color: salmon; */
   min-height: 100vh;
   top: 0;
-  left: 80px;
-  width: 95%;
+  left: 78px;
+  width: 100%;
   transition: width 0.4s ease;
   z-index: 2;
 }
 .sidebar.open ~ .home-section{
-  left: 150px;
-  width: calc(100% - 150px);
+  left: 250px;
+  width: calc(100% - 250px);
+ /*  width: 100%; */
   transition: width 0.4s ease;
+
 }
 .home-section .text{
   display: inline-block;

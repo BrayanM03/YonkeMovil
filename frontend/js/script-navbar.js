@@ -34,8 +34,25 @@ for (i = 0; i < coll.length; i++) {
     var content = this.nextElementSibling;
     if (content.style.maxHeight){
       content.style.maxHeight = null;
-    } else {
+    }else{
       content.style.maxHeight = content.scrollHeight + "px";
     } 
   });
 }
+
+
+//Animaciones en los iconos del navbar
+
+$(".item-con-icono").hover(function() { 
+
+    let icono = $(this).find("i");
+    icono.addClass("bx-tada");
+
+ }, function(){
+
+    let icono = $(this).find("i");
+    icono.removeClass("bx-tada");
+
+ })
+
+

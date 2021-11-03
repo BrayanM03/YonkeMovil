@@ -16,11 +16,17 @@ function MostrarUsuarios() {
     { title: "Nombre",          data: "nombre" , width: "20%"},
     { title: "Usuario",         data: "usuario" },
     /* { title: "Contraseña",            data: "contraseña"}, */
-    { title: "fecha",            data: "fecha"},
-    { title: "rol",            data: "rol"},
+    { title: "Fecha",            data: "fecha"},
+    { title: "Rol",            data: "rol"},
    // { title: "sucursal",            data: "sucursal"},
-    { title: "puesto",            data: "puesto"},
-    { title: "Accion",
+    { title: "Puesto",            data: "puesto"},
+    { title: "Foto",
+      data: null, 
+      render: function (row) { 
+        return '<img src="./frontend/recursos/img/pp/' +  row.usuario +'.jpg" style="width: 50px; height:50px; border-radius:45%;"></img>'
+       }
+    },
+    { title: "Accion" ,
       data: null,
       className: "celda-acciones",
       render: function (row, data) {
