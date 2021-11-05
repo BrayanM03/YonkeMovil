@@ -334,7 +334,7 @@ $.ajax({
     if (response==1) {
       Swal.fire(
         "¡Correcto!",
-        "Se registro el usuairo",
+        "Se registro el usuario",
         "success"
         ).then((result) =>{
 

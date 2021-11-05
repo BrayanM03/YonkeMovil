@@ -25,7 +25,7 @@ include 'backend/login/conexion.php';
     <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
     <!-- CSS only -->
     
-<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css"><!-- 
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'> -->
 
@@ -36,7 +36,10 @@ include 'backend/login/conexion.php';
   
     <link rel="stylesheet" href="frontend/css/style-navbar.css">
     <link rel="stylesheet" href="frontend/css/usuarios/usuarios.css">
+
     <link rel="stylesheet" href="frontend/node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -175,7 +178,7 @@ include 'backend/login/conexion.php';
             
             <input id="contraseña" class="form-control" type="password" placeholder="Contraseña" autocomplete="new-password">  
                  <div class="input-group-append">
-                   <button id="show_password" class="btn btn-lg btn-primary" type="button" onclick="mostrarPassword()" style="height: 34px;"> <span class="fa fa-eye-slash icon"></span> </button>
+                   <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()" style="height: 34px;"> <span class="fa fa-eye-slash icon"></span> </button>
                  </div>
             <div class="invalid-feedback">Contraseña insegura.</div> 
             </div>
@@ -225,9 +228,10 @@ include 'backend/login/conexion.php';
     <script type="text/javascript" src="frontend/node_modules/jquery-ui/jquery-ui.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <!-- JavaScript Bundle with Popper -->
-    
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script><!-- 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>  --> 
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>  
+
 <  <script src="frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
     <script src="frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
