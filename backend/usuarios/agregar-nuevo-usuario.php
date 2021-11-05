@@ -19,9 +19,16 @@
         $puesto = $_POST["puesto"];
       //  $sucursal =$_POST["sucursal"];
        // $id_sucursal = $_POST["yonke_id"];
-       if(isset($_POST["yonkes"])){
+       if(isset($_POST["yonkes"])){ 
         $array_yonkes = $_POST["yonkes"];
        }
+
+
+       //Validar si el usuario es de tipo Yonkero
+
+    /*    if ($rol == 1) {
+           # code...
+       } */
       
         
 

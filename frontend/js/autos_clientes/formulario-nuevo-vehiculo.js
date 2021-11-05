@@ -301,7 +301,6 @@ $(".add-images").on("click", function () {
      var formData = new FormData();
      var agregarAuto = document.getElementById('add-vehicule-client');
      var preload = document.querySelector('.preload');
-
      
 
 
@@ -318,7 +317,7 @@ $(".add-images").on("click", function () {
          e.target.value = '';
 
         /*  $('.add-images').empty(); */
-         document.getElementById('preview-images').insertAdjacentHTML('beforeend', '<i class="icono-add-image bx bxs-message-square-add bx-tada-hover bx-lg"></i>');
+        // document.getElementById('preview-images').insertAdjacentHTML('beforeend', '<i class="icono-add-image bx bxs-message-square-add bx-tada-hover bx-lg"></i>');
 
      });
 
@@ -357,6 +356,7 @@ $(".add-images").on("click", function () {
             }
 
             document.querySelectorAll('.thumbnail').forEach(function (thumbnail) { 
+               
                 thumbnail.remove();
              });
 
@@ -367,18 +367,31 @@ $(".add-images").on("click", function () {
        document.body.addEventListener('click', function (e) { 
     
            if(e.target.classList.contains('remover')){
-                e.target.parentNode.parentNode.remove();  
+               
+                e.target.parentNode.parentNode.remove(); 
+                 
                 formData.delete(e.target.parentNode.parentNode.dataset.id);
                 
            }
+
+          
+
         })
 
-        //Evento que subira las imagenes a la database
+        //Evento que subira las imagenes a la database ------------------******
         agregarAuto.addEventListener('click', function (e) { 
 
             e.preventDefault();
             //Activamos el preload
             preload.classList.add('activate-preload');
+
+            var marca = document.getElementById('marca_select').value;
+            var año = document.getElementById('año_select').value;
+            var modelo = document.getElementById('modelo_select').value;
+
+            formData.append('año', año);
+            formData.append('marca', marca);
+            formData.append('modelo', modelo);
 
             fetch('./backend/autos_clientes/subir_auto.php', {
                 method: 'POST',
@@ -386,14 +399,17 @@ $(".add-images").on("click", function () {
             }).then(function (response) { 
                 return response.json();
              }).then(function (data) { 
-                preload.classList.remove('activate-preload');
+                 preload.classList.remove('activate-preload');
                  clearFormDataAndThumbnails();
                  console.log(data);
               }).catch(function (err) { 
                   console.log(err);
                })
 
-         })
+         });
+
+
+         
 
      
  })();

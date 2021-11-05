@@ -1,0 +1,19 @@
+
+
+    #agregar-usuario{
+        font-size: 14px;
+    }
+
+
+
+    div.dropdown-menu.open{
+        z-index: 999999999999;
+    }
+
+    .dropdown-menu{
+        font-size: 14px;
+    }
+
+   /*  .swal2-popup {
+        font-size: 1.6rem !important;
+      } */

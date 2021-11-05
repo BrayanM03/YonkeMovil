@@ -62,6 +62,7 @@
     justify-content: center;
     width: 100%;
 }
+
 #preview-images .thumbnail{
     width: 150px;
     height: 150px;
@@ -71,7 +72,7 @@
     vertical-align: middle;
     border-radius: 8px;
     background-size:cover;
-    transition: all .5s ease-in-out;
+    transition: position .5s ease-in-out;
 }
 
 .close-button{

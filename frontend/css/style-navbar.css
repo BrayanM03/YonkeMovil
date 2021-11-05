@@ -325,7 +325,7 @@ body{
 .home-section .text{
   display: inline-block;
   color: #11101d;
-  font-size: 25px;
+  /* font-size: 25px; */
   font-weight: 500;
   /* margin: 18px */
 }
@@ -363,3 +363,4 @@ body{
   transition: max-height 0.2s ease-out;
   background-color: transparent;
 }
+

@@ -26,8 +26,9 @@ include 'backend/login/conexion.php';
     <!-- CSS only -->
     
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'>
-<link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css"><!-- 
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'> -->
+
    <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
@@ -35,7 +36,7 @@ include 'backend/login/conexion.php';
   
     <link rel="stylesheet" href="frontend/css/style-navbar.css">
     <link rel="stylesheet" href="frontend/css/usuarios/usuarios.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="frontend/node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -143,25 +144,77 @@ include 'backend/login/conexion.php';
   </div>
   <section class="home-section">
 
-  <div class="contenedor-principal m-3">
+  <div class="contenedor-principal m-3" style="font-size: 14px;">
     <div class="row">
         <div class="col-12 col-md-12 text-center mt-3">
-            <h4 style="font-size: 20px;">Usuarios del sistema</h4>
-            <p style="font-size: 14px;">Estos son los usuarios que se han registrado en la aplicación</p>
+            <h4 style="font-size: 20px;">Agregar un usuario</h4>
+            <p style="font-size: 14px;">Agregar un usuario en la aplicacion</p>
         </div>  
       </div>
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-10 p-3"  style="font-size: 14px;">
-        <a href="agregar-usuario.php" style="text-decoration:none; color:white;">  
-        <div class="btn btn-lg btn-danger"> Agregar usuario</div>
-        </a>
+
+      <div class="row justify-content-center mt-3">
+        <div class="col-12 col-md-5">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" class="form-control" type="text" placeholder="Nombre completo">
+            <div class="invalid-feedback"></div>
         </div>
       </div>
-      <div class="row justify-content-center">
-          <div class="col-12 col-md-10 p-3">
-          <table style="font-size: 14px;"width="80%" class="table table-striped table-hover dt-responsive display nowrap" cellspacing="0" id="tabla-usuarios" style="background-color: white;"></table>
-          </div>
+
+      <div class="row justify-content-center mt-3">
+      <div class="col-12 col-md-5">
+            <label><b>Usuario</b></label> 
+            <input id="usuario" class="form-control" type="text" placeholder="Usuario" autocomplete="new-password">
+            <div class="invalid-feedback">Ya existe un usuario con ese nombre.</div>
+        </div>
       </div>
+
+      <div class="row justify-content-center mt-3">
+        <div class="col-12 col-md-5">
+        <label><b>Contraseña</b></label>
+            <div class="input-group">
+            
+            <input id="contraseña" class="form-control" type="password" placeholder="Contraseña" autocomplete="new-password">  
+                 <div class="input-group-append">
+                   <button id="show_password" class="btn btn-lg btn-primary" type="button" onclick="mostrarPassword()" style="height: 34px;"> <span class="fa fa-eye-slash icon"></span> </button>
+                 </div>
+            <div class="invalid-feedback">Contraseña insegura.</div> 
+            </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-3">
+        <div class="col-12 col-md-5">
+                <label><b>Rol</b></label>
+                <select type="text" class="form-control m-auto" onchange="asignarYonke(this);" name="rol" id="rol" >
+                <option value="0">Administrador</option>
+                <option value="1">Usuario de Yonke</option>
+                </select>   
+        </div>
+      </div>
+
+
+       <div class="row justify-content-center mt-3">
+        <div class="col-12 col-md-5">
+             <label>Puesto:</label>
+            <input type="text" class="form-control" id="puesto" placeholder="Puesto..."></input>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-3">
+        <div class="col-12 col-md-5">
+            <div id="buscador-yonke"></div>
+        </div>
+      </div>
+    
+      <div class="row  mt-3">
+        <div class="col-12 col-md-12 text-center">
+            <div class="btn btn-primary btn-lg" onclick="agregarUsuario();">Agregar usuario</div>
+        </div>
+      </div>        
+               
+                        
+             
+               
   </div>
 
   </section>
@@ -173,8 +226,8 @@ include 'backend/login/conexion.php';
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <!-- JavaScript Bundle with Popper -->
     
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script><!-- 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>  --> 
 <  <script src="frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
     <script src="frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
@@ -189,6 +242,7 @@ include 'backend/login/conexion.php';
     <!----Mis librerias----->
   <script src="frontend/js/script-navbar.js"></script>
   <script src="frontend/js/usuarios/usuarios.js"></script>
+  <script src="frontend/js/usuarios/agregar-usuario.js"></script>
   
 
 
