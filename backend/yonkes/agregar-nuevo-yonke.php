@@ -31,6 +31,12 @@
             print_r("ckldsmnfl");
         }
 
+        $ruta = "../../frontend/recursos/img/base_datos/yonkes/name_" . $nombre . "_id_" . $yonke_id;
+        if (!file_exists($ruta)) {
+         
+            mkdir($ruta, 077, true);
+        }
+
        
         
 

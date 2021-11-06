@@ -30,6 +30,7 @@ include 'backend/login/conexion.php';
     
     <link rel="icon" href="frontend/recursos/icon/favicon.ico" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
       .select2 {
                 width:100%!important;

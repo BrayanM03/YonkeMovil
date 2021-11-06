@@ -1,3 +1,6 @@
+
+document.documentElement.style.setProperty('--animate-duration', '.3s');
+
 function mostrarFormularioNuevoVehiculo(){
 
     let home_section = $(".home-section");
@@ -330,9 +333,11 @@ $(".add-images").on("click", function () {
 
          thumbnail.setAttribute('style', `background-image: url(${URL.createObjectURL(archivo.files[iterador])})`);
 
+
          document.getElementById('preview-images').appendChild(thumbnail);
 
          createCloseButton(thumbnail_id);
+         thumbnail.classList.add('animate__animated', 'animate__fadeInRight')
          console.log(formData);
          
      };
@@ -356,7 +361,8 @@ $(".add-images").on("click", function () {
             }
 
             document.querySelectorAll('.thumbnail').forEach(function (thumbnail) { 
-               
+                thumbnail.classList.remove('animate__fadeInRight');
+                thumbnail.classList.add('animate__backOutUp');
                 thumbnail.remove();
              });
 
@@ -368,9 +374,15 @@ $(".add-images").on("click", function () {
     
            if(e.target.classList.contains('remover')){
                
-                e.target.parentNode.parentNode.remove(); 
-                 
-                formData.delete(e.target.parentNode.parentNode.dataset.id);
+                 e.target.parentNode.parentNode.classList.remove('animate__fadeInRight');
+                 e.target.parentNode.parentNode.classList.add('animate__fadeOutDown');
+                
+                 setInterval(borrarData, 350);
+
+                 function borrarData(){
+                    e.target.parentNode.parentNode.remove(); 
+                    formData.delete(e.target.parentNode.parentNode.dataset.id);
+                 }
                 
            }
 

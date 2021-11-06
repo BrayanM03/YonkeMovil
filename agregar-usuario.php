@@ -9,7 +9,6 @@ include 'backend/login/conexion.php';
     header("Location:login.php");
     die();
  }
-
  
 
 ?>
@@ -39,6 +38,7 @@ include 'backend/login/conexion.php';
 
     <link rel="stylesheet" href="frontend/node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -157,9 +157,9 @@ include 'backend/login/conexion.php';
 
       <div class="row justify-content-center mt-3">
         <div class="col-12 col-md-5">
-            <label for="nombre">Nombre</label>
+            <label for="nombre"><b>Nombre</b></label>
             <input id="nombre" class="form-control" type="text" placeholder="Nombre completo">
-            <div class="invalid-feedback"></div>
+            <div class="invalid-feedback">Agrega un nombre</div>
         </div>
       </div>
 
@@ -167,7 +167,7 @@ include 'backend/login/conexion.php';
       <div class="col-12 col-md-5">
             <label><b>Usuario</b></label> 
             <input id="usuario" class="form-control" type="text" placeholder="Usuario" autocomplete="new-password">
-            <div class="invalid-feedback">Ya existe un usuario con ese nombre.</div>
+            <div class="invalid-feedback" id="text-invalid-user-input"></div>
         </div>
       </div>
 
@@ -180,7 +180,7 @@ include 'backend/login/conexion.php';
                  <div class="input-group-append">
                    <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()" style="height: 34px;"> <span class="fa fa-eye-slash icon"></span> </button>
                  </div>
-            <div class="invalid-feedback">Contraseña insegura.</div> 
+            <div class="invalid-feedback" id="text-invalid-pass-input">Contraseña insegura.</div> 
             </div>
         </div>
       </div>
@@ -198,8 +198,9 @@ include 'backend/login/conexion.php';
 
        <div class="row justify-content-center mt-3">
         <div class="col-12 col-md-5">
-             <label>Puesto:</label>
+            <label><b>Puesto:</b></label>
             <input type="text" class="form-control" id="puesto" placeholder="Puesto..."></input>
+            <div class="invalid-feedback" id="text-invalid-puesto-input">Contraseña insegura.</div> 
         </div>
       </div>
 

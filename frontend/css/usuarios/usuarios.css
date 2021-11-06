@@ -17,3 +17,14 @@
    /*  .swal2-popup {
         font-size: 1.6rem !important;
       } */
+
+      .select2-selection__choice__remove{
+          border: 1px solid;
+          padding: 2px 4px;
+          border-radius: 5px 0px 0px 5px;
+      }
+
+      .select2-search__field{
+          height: 85px;
+          border: 1px solid green;
+      }

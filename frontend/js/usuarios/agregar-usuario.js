@@ -9,7 +9,15 @@
                     if ( contraseña_valor.length < 6 ) {
                       $('#contraseña').removeClass('is-valid').addClass('is-invalid');
                       $("#feedback-pass").text("Nivel de seguridad: bajo").removeClass().addClass("invalid-feedback");
+                      $("#text-invalid-pass-input").text("Debes ser mas de 6 caracteres");
                   }
+
+                  if ( contraseña_valor.length == 0) {
+                    $('#contraseña').removeClass('is-valid').addClass('is-invalid');
+                    $("#feedback-pass").text("Nivel de seguridad: bajo").removeClass().addClass("invalid-feedback");
+                    $("#text-invalid-pass-input").text("Ingresa una contraseña");
+                }
+
                   //validar letra
                   if ( contraseña_valor.match(/[A-z]/) ) {
                       $('#contraseña').removeClass('is-invalid').addClass('is-valid');
@@ -129,45 +137,13 @@ function asignarYonke(opcion){
     }else{
   
       $("#buscador-yonke").empty();
-      $("#buscador-yonke").append('<label>Asignar Yonke:</label>'+
+      $("#buscador-yonke").append('<label><b>Asignar Yonke:<b></label>'+
       '<select class="form-control" id="buscar-yonke" name="yonkes[]" multiple="multiple">'+
+      '<div class="invalid-feedback">Ingresa un yonke.</div>'+
        
       '</select>');
   
-      /* $('#buscar-yonke').selectpicker(); */
-
-     /*  $(".input-block-level").keyup(function () {
-        $("#buscador-yonke").empty();     
-        string=  $(this).val(); 
-        console.log(string);
-
-        //Aqui estaba la funcion  sleect23
-        var datos = new FormData();
-        datos.append("searchTerm", string);
-      fetch('./backend/usuarios/buscar-yonke.php', {
-        method: 'POST',
-        body: datos
-    }).then(function (response) { 
-        return response.json();
-        
-     }).then(function(data){
-       
-         $("#buscar-yonke").empty();
-
-        data.forEach(element => {
-            console.log(element.nombre);
-             $(".dropdown-menu").append('<li data-original-index="'+ element.id +'" class="">'+
-                 '<a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>'+ element.nombre +'</span>">'+
-                     '<span class="text">'+ element.nombre +'</span><span class="glyphicon">'+
-                    '</span>'+
-                '</a></li>');
-         });
-
-         $('#buscar-yonke').selectpicker();
-     })
     
-        });  */ 
-  
       
   
       
@@ -266,42 +242,73 @@ function agregarUsuario(){
       if( data["nombre"] == ""){
         $(".datoVacio").removeClass("datoVacio");
         $(".border-danger").removeClass("border-danger");
-        $("#nombre").addClass("border-danger");
-        Swal.showValidationMessage(
-          `Establece un nombre`
-        )
+        $("#nombre").addClass("is-invalid");
+        
+        animacion_test =$(".contenedor-principal").hasClass('animate__animated animate__shakeX');
+        animacion_test ? $(".contenedor-principal").removeClass('animate__animated animate__shakeX') : $(".contenedor-principal").addClass('animate__animated animate__shakeX');
+
       }else if( data["usuario"] == ""){
         $(".datoVacio").removeClass("datoVacio");
         $(".border-danger").removeClass("border-danger");
-        $("#usuario").addClass("border-danger");
-        Swal.showValidationMessage(
-          `Establece un usuario`
-        )
+        $("#usuario").addClass("is-invalid");
+        $("#text-invalid-user-input").text("Ingresa un nombre de usuario");
+        animacion_test =$(".contenedor-principal").hasClass('animate__animated animate__shakeX');
+        animacion_test ? $(".contenedor-principal").removeClass('animate__animated animate__shakeX') : $(".contenedor-principal").addClass('animate__animated animate__shakeX');
+        
       }else if( data["contraseña"] == ""){
         $(".datoVacio").removeClass("datoVacio");
         $(".border-danger").removeClass("border-danger");
-        $("#contraseña").addClass("border-danger");
-        Swal.showValidationMessage(
-          `Establece una contraseña`
-        )
+        $("#contraseña").addClass("is-invalid");
+        $("#text-invalid-pass-input").text("Ingresa una contraseña");
+
+        animacion_test =$(".contenedor-principal").hasClass('animate__animated animate__shakeX');
+        animacion_test ? $(".contenedor-principal").removeClass('animate__animated animate__shakeX') : $(".contenedor-principal").addClass('animate__animated animate__shakeX');
+
       }else if( data["puesto"] == ""){
         $(".datoVacio").removeClass("datoVacio");
         $(".border-danger").removeClass("border-danger");
-        $("#puesto").addClass("border-danger");
-        Swal.showValidationMessage(
-          `Establece un puesto`
-        )
+        $("#puesto").addClass("is-invalid");
+        $("#text-invalid-puesto-input").text("Ingresa una contraseña");
       }else if($("#rol").val() == 1){
-        console.log("rol");
-        if($("#buscador-yonke").attr("yonke") == null){
-          console.log("cuak");
-          $(".datoVacio").removeClass("datoVacio");
-          $(".border-danger").removeClass("border-danger");
-          $("#buscar-yonke").addClass("border-danger");
-          Swal.showValidationMessage(
-            `Asgina un yonke a este usuario.`
-          )
-        }
+       
+        
+        
+        
+  nombre_usuario=        $("#nombre").val();
+  username=              $("#usuario").val();
+  pass_usuario=          $("#contraseña").val();
+  rol_usuario=           $("#rol").val();
+  puesto_usuario=        $("#puesto").val();
+
+  yonkes_escogidos =$("#buscar-yonke").val();
+  if(yonkes_escogidos == null || yonkes_escogidos.length == 0){
+    console.log("Sin datos");
+    $("#buscar-yonke").addClass("invalid");
+  };
+
+
+$.ajax({
+  type: "POST",
+  url: "./backend/usuarios/agregar-nuevo-usuario.php",
+  data:{"nombre": nombre_usuario, "usuario": username, "contraseña": pass_usuario, "rol": rol_usuario, "puesto": puesto_usuario, "yonkes" : yonkes_escogidos},
+  success: function(response) {
+    
+    if(response == 1){
+      Swal.fire(
+        "¡Correcto!",
+        "Se registro el usuario",
+        "success"
+        )
+    }else if(response == 2){
+      Swal.fire(
+        "¡Hubo un error!",
+        "Ese usuario ya fue registrado",
+        "error"
+        )
+    }
+
+  },
+}); 
       
       }else if($("#usuario").attr("validar")=="invalid"){
         console.log("rol");
@@ -331,37 +338,21 @@ $.ajax({
   url: "./backend/usuarios/agregar-nuevo-usuario.php",
   data:{"nombre": nombre_usuario, "usuario": username, "contraseña": pass_usuario, "rol": rol_usuario, "puesto": puesto_usuario, "yonkes" : yonkes_escogidos},
   success: function(response) {
-    if (response==1) {
+
+    if(response == 1){
       Swal.fire(
         "¡Correcto!",
         "Se registro el usuario",
         "success"
-        ).then((result) =>{
-
-          if(result.isConfirmed){
-             table.ajax.reload(null, false);
-          }else if(result.isDenied){
-           table.ajax.reload(null, false);
-          }
-          });
-
-    }else{
+        )
+    }else if(response == 2){
       Swal.fire(
-        "¡Error!",
-        "No se agrego el producto",
+        "¡Hubo un error!",
+        "Ese usuario ya fue registrado",
         "error"
         )
-        console.log(response);
-       table.ajax.reload(null, false);
     }
   },
-  failure: function (response) {
-      Swal.fire(
-      "Error",
-      "El producto no fue agregado.", // had a missing comma
-      "error"
-      )
-  }
 }); 
                       
       }
@@ -369,5 +360,18 @@ $.ajax({
 }
   
 
+//Validacion de formulario
 
+$("#nombre").keyup(function(){
+
+  nombre_inpt_val = $("#nombre").val();
+  if( nombre_inpt_val !== ""){
+    $("#nombre").removeClass("is-invalid");
+    $("#nombre").addClass("is-valid");
+  }else{
+    $("#nombre").removeClass("is-valid");
+    $("#nombre").addClass("is-invalid");
+  };
+
+})
 

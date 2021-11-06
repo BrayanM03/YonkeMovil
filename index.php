@@ -10,7 +10,7 @@ include 'backend/login/conexion.php';
     die();
  }
 
- if($_SESSION["rol"] == 3){
+ if($_SESSION["rol"] == 1){
   header("Location:panel_cliente.php");
   
  }
