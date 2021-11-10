@@ -24,8 +24,8 @@ include 'backend/login/conexion.php';
     <!-- Librerias de terceros --><!-- 
     <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
     <!-- CSS only -->
-    
-<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <!-- 
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'>
 <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
@@ -189,6 +189,7 @@ include 'backend/login/conexion.php';
     <!----Mis librerias----->
   <script src="frontend/js/script-navbar.js"></script>
   <script src="frontend/js/usuarios/usuarios.js"></script>
+  <script src="frontend/js/usuarios/eliminar-usuario.js"></script>
   
 
 

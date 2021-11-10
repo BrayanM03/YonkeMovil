@@ -60,14 +60,14 @@
                 $resultado->execute();
                 $resultado->close();
 
-                $consultar_nombre_yonke = "SELECT nombre FROM yonkes WHERE id = ?";
+               /*  $consultar_nombre_yonke = "SELECT nombre FROM yonkes WHERE id = ?";
                 $resultado = $con->prepare($consultar_nombre_yonke);
                 $resultado->bind_param('s', $yonke_id);
                 $resultado->execute();
                 $resultado->bind_result($nombre_yonke);
                 $resultado->fetch();
                 $resultado->close();
-
+ */
                
 
             }

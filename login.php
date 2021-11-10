@@ -30,6 +30,8 @@
     <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
     
     <link rel="stylesheet" type="text/css" href="frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
+    
+    <link rel="stylesheet" type="text/css" href="frontend/css/login.css"> 
     <!-- Style.css -->
    <!--  <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
    <style>
@@ -59,7 +61,7 @@
 </div>
     <!-- Pre-loader end -->
 
-    <section class="text-center mt-5" style="background-color: #e22f22; height:88vh;">
+    <section class="text-center mt-5" style="background-color: #e22f22;">
         <!-- Container-fluid starts -->
         <div class="container d-flex justify-content-center">
             <div class="row">
@@ -85,7 +87,13 @@
                 <!-- end of col-sm-12 -->
             </div>
             <!-- end of row -->
+           
         </div>
+        <div class="row" id="dino-fila">
+                <div class="col-12 col-md-12">
+                <img id="dinosaur" style="width:150px;" src="./frontend/recursos/img/robotic-dinosaur.gif" alt="robotic-dinosaur"> 
+                </div>
+            </div>
         <!-- end of container-fluid -->
 
         
