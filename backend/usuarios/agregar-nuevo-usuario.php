@@ -53,6 +53,17 @@
 
         if($rol == 1){
 
+            //Creanndo ruta para guardar imagenes
+            $micarpeta = '../../frontend/recursos/img/base_datos/carpeta_user_'. $usuario_id;
+            if (!file_exists($micarpeta)) {
+                mkdir($micarpeta, 0777, true);
+                $micarpetaYonke = '../../frontend/recursos/img/base_datos/carpeta_user_'. $usuario_id . '/yonkes';
+                if (!file_exists($micarpetaYonke)) {
+                    mkdir($micarpetaYonke, 0777, true);
+                }
+            }
+
+
             foreach ($array_yonkes as &$yonke_id) {
                 $query = "INSERT INTO detalle_yonke (id, id_usuario, id_yonke, fecha) VALUES (null,?,?,?)";
                 $resultado = $con->prepare($query);
@@ -60,17 +71,32 @@
                 $resultado->execute();
                 $resultado->close();
 
-               /*  $consultar_nombre_yonke = "SELECT nombre FROM yonkes WHERE id = ?";
-                $resultado = $con->prepare($consultar_nombre_yonke);
-                $resultado->bind_param('s', $yonke_id);
-                $resultado->execute();
-                $resultado->bind_result($nombre_yonke);
-                $resultado->fetch();
-                $resultado->close();
- */
-               
+                $micarpetaYonkes = '../../frontend/recursos/img/base_datos/carpeta_user_'. $usuario_id . '/yonkes/yonke_id_'.$yonke_id;
+                if (!file_exists($micarpetaYonkes)) {
+                    mkdir($micarpetaYonkes, 0777, true);
+                    
+                }
 
+              
             }
+
+                //Creamos la tabla del inventario de cliente
+                $tabla = "inventario_cliente_" . $usuario_id;
+                $crear_tabla = "CREATE TABLE $tabla (
+                    id int NOT NULL PRIMARY KEY,
+                    año int,
+                    modelo VARCHAR(150),
+                    marca VARCHAR(150),
+                    stock int,
+                    estatus VARCHAR(60),
+                    id_yonke int,
+                    fecha varchar(100)
+                );";
+                $result = $con->prepare($crear_tabla);
+                $result->execute();
+                $result->close();
+
+                //
         }
 
         print_r(1);

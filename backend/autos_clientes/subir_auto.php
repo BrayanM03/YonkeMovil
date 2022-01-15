@@ -9,23 +9,40 @@ session_start();
 
 
     $numero_fotos_subidas =  count($_FILES);
-    
+    $tabla = "inventario_cliente_". $_SESSION['id'];
+    $stock = $_POST['cantidad'];
+    $fecha = date('Y-m-d');
+    $hora = date('H:i:s');
+    $creado_el = $fecha . " a las ". $hora;  
+
+    $year = $_POST["año"];
+    $marca = $_POST["marca"];
+    $modelo =  $_POST["modelo"];
+    $yonke_id = 1; //yonke id test
     //Validamos si se mandaron fotos o no
     if ($numero_fotos_subidas == 0) {
         print_r("Data:" . $_POST["año"] . " " . $_POST["marca"] . " " . $_POST["modelo"] . " ");
+       
 
-        $query = "INSERT INTO usuarios (id, nombre, usuario, contraseña, fecha, rol, puesto ) VALUES (null,?,?,?,?,?,?)";
+        $query = "INSERT INTO $tabla(id, año, modelo, marca, stock, estatus, id_yonke, fecha) VALUES (null,?,?,?,?,?)";
         $resultado = $con->prepare($query);
-        $resultado->bind_param('ssssss', $nombre, $usuario, $contraseña_cifrada, $fecha, $rol, $puesto);
+        $resultado->bind_param('sssss', $year, $modelo, $marca, $stock, $estatus);
         $resultado->execute();
         $resultado->close();
 
     }else{
 
         //Verificamos si existe la carpeta unica de cliente
-    if (!is_dir('../../frontend/recursos/img/base_datos/customer/cliente_' . $_SESSION['id'])) {
-        mkdir('../../frontend/recursos/img/base_datos/customer/cliente_' . $_SESSION['id']);
+    if (!is_dir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id)) {
+        mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id);
      }
+
+     //Insertamos la unidad en el inventario de yonkes
+     $query = "INSERT INTO $tabla(id, año, modelo, marca, stock, estatus) VALUES (null,?,?,?,?,?)";
+        $resultado = $con->prepare($query);
+        $resultado->bind_param('sssss', $year, $modelo, $marca, $stock, $estatus);
+        $resultado->execute();
+        $resultado->close();
  
      $count = 0; //Creamos un contador para contar las subidas
      $data = (!file_exists('database.json') ? [] : json_decode( file_get_contents('database.json'))); //verificamos si existe nuestro JSON donde se almacenara la info de la update
@@ -36,9 +53,10 @@ session_start();
      //Aqui recorremos la variable global FILES done verificamos si se movio el archivo a la carpeta unica del cliente
      foreach($_FILES as $key => $file){
  
-         if (!move_uploaded_file($file['tmp_name'], '../../frontend/recursos/img/base_datos/customer/cliente_' . $_SESSION['id'] .'/'. $file['name'])) {
+         $file["name"] = $year . "_" . $marca . "_" . $modelo ."_filekey_". $key;
+         if (!move_uploaded_file($file['tmp_name'], '../../frontend/recursos/img/base_datos/carpeta_user_' . $_SESSION['id'] .'/yonke_id_'. $yonke_id .'/'. $file['name'])) {
              
-             return print_r( json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)] ));
+             return print_r( json_encode(['message' => 'No fue posible subir el archivo ' . $file['name'], 'status' => http_response_code(500)] ));
  
          }
  
