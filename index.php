@@ -84,7 +84,7 @@ include 'backend/login/conexion.php';
        <ul>
        <li class="list-item">
        <a href="mis-vehiculos.php">
-         <i class='bx bx-car' ></i>
+         <i class='bx bx-car'></i>
          <span class="links_name">Vehiculos</span>
        </a>
        <span class="tooltip">Vehiculos</span>

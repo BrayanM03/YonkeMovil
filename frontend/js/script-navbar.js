@@ -53,6 +53,42 @@ $(".item-con-icono").hover(function() {
     let icono = $(this).find("i");
     icono.removeClass("bx-tada");
 
- })
+ });
+
+
+
+ //Traer yonkes de cliente
+ flag =0;
+ function traerYonkeCliente(user_id){
+   if(flag==0){
+    
+
+    $.ajax({
+      type: "POST",
+      url: "./backend/yonkes/traer-yonkes-cliente.php",
+      data: {"user_id": user_id},
+      dataType: "JSON",
+      success: function (response) {
+        console.log(response);
+        
+        /* $("#lista-yonkes-cliente-navbar").append(`
+        <li class="list-item">
+                <a href="mis-vehiculos-cliente.php">
+                  <i class='bx bx-car'></i>
+                  <span class="links_name">Mis Vehiculos</span>
+                </a>
+                <span class="tooltip">Vehiculos</span>
+              </li>`) */
+      }
+    });
+
+    flag =1;
+   }else if(flag==1){
+      console.log('NOOOO');
+      flag =0;
+   }
+   
+   
+ }
 
 

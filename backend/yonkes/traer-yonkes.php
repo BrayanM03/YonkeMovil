@@ -17,6 +17,7 @@ if (isset($_POST)) {
     $resultado = mysqli_query($con, $query);
 
     while($fila = $resultado->fetch_assoc()){
+        
     $id= $fila["id"];
     $nombre = $fila["nombre"];
     $contacto = $fila["contacto"];
