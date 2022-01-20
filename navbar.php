@@ -21,12 +21,12 @@
        </li>
 
        <li class="list-item">
-       <a href="#collapse-yonkes" class="collapsible" onclick="traerYonkeCliente(<?php echo $_SESSION['id'] ?>)">
+       <a href="#collapse-yonkes" class="collapsible">
        <i class='bx bxs-store' ></i>
          <span class="links_name">Yonkes</span>
        </a>
           <div id="collapse-yonkes" class="content-collapse">
-          <ul id="lista-yonkes-cliente-navbar">
+          <ul id="lista-yonkes-cliente-navbar" id_sesion="<?php echo $_SESSION['id'] ?>">
                 <!-- <li class="list-item">
                 <a href="mis-vehiculos-cliente.php">
                   <i class='bx bx-car'></i>

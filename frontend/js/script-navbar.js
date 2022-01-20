@@ -58,10 +58,8 @@ $(".item-con-icono").hover(function() {
 
 
  //Traer yonkes de cliente
- flag =0;
- function traerYonkeCliente(user_id){
-   if(flag==0){
-    
+ 
+    user_id = $("#lista-yonkes-cliente-navbar").attr("id_sesion");
 
     $.ajax({
       type: "POST",
@@ -69,26 +67,23 @@ $(".item-con-icono").hover(function() {
       data: {"user_id": user_id},
       dataType: "JSON",
       success: function (response) {
-        console.log(response);
-        
-        /* $("#lista-yonkes-cliente-navbar").append(`
+       
+        response.forEach(element => {
+            console.log(element.nombre);
+
+            $("#lista-yonkes-cliente-navbar").append(`
         <li class="list-item">
                 <a href="mis-vehiculos-cliente.php">
                   <i class='bx bx-car'></i>
-                  <span class="links_name">Mis Vehiculos</span>
+                  <span class="links_name">${element.nombre}</span>
                 </a>
-                <span class="tooltip">Vehiculos</span>
-              </li>`) */
+                <span class="tooltip">${element.nombre}</span>
+              </li>`)
+
+        });
+        
+        
       }
     });
-
-    flag =1;
-   }else if(flag==1){
-      console.log('NOOOO');
-      flag =0;
-   }
-   
-   
- }
 
 
