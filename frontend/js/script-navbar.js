@@ -59,7 +59,7 @@ $(".item-con-icono").hover(function() {
 
  //Traer yonkes de cliente
  
-    user_id = $("#lista-yonkes-cliente-navbar").attr("id_sesion");
+  /*   user_id = $("#lista-yonkes-cliente-navbar").attr("id_sesion");
 
     $.ajax({
       type: "POST",
@@ -84,6 +84,6 @@ $(".item-con-icono").hover(function() {
         
         
       }
-    });
+    }); */
 
 

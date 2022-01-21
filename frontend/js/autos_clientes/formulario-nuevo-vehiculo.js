@@ -146,6 +146,12 @@ function mostrarFormularioNuevoVehiculo(){
 
                     '</div>'+
 
+                    '<div class="row mt-3 justify-content-center">'+
+                    '<div class="col-12 col-md-3">'+
+                        '<label for="stock"><b>Cantidad</b></label>'+
+                        '<input class="form-control" type="number" id="stock" placeholder="0">'+
+                    '</div>'+
+                    '</div>'+
                     //Cuerpo del card
                     '<div class="row justify-content-center">'+
                         '<div class="col-12 col-md-3 mt-5">'+
@@ -400,10 +406,11 @@ $(".add-images").on("click", function () {
             var marca = document.getElementById('marca_select').value;
             var año = document.getElementById('año_select').value;
             var modelo = document.getElementById('modelo_select').value;
-
+            var cantidad = document.getElementById('stock').value;
             formData.append('año', año);
             formData.append('marca', marca);
             formData.append('modelo', modelo);
+            formData.append('cantidad', cantidad);
 
             fetch('./backend/autos_clientes/subir_auto.php', {
                 method: 'POST',
