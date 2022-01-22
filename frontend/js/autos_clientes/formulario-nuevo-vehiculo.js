@@ -29,6 +29,10 @@ function mostrarFormularioNuevoVehiculo(){
                         '<label for="yonke-elegido"><b>Agregar a:</b></label>'+
                         '<select class="form-control" id="yonke-elegido">'+
                         '</select>'+
+                        '</div>'+
+                        '<div class="col-12 col-md-2">'+
+                        '<label for="cantidad"><b>Cantidad</b></label>'+
+                        '<input type="text" placeholder="0" class="form-control" id="cantidad">'+
                     '</div>'+
                 '</div>'+
                     '<div class="row mt-3">'+
@@ -153,12 +157,7 @@ function mostrarFormularioNuevoVehiculo(){
 
                     '</div>'+
 
-                    '<div class="row mt-3 justify-content-center">'+
-                    '<div class="col-12 col-md-3">'+
-                        '<label for="stock"><b>Cantidad</b></label>'+
-                        '<input class="form-control" type="number" id="stock" placeholder="0">'+
-                    '</div>'+
-                    '</div>'+
+                  
                     //Cuerpo del card
                     '<div class="row justify-content-center">'+
                         '<div class="col-12 col-md-3 mt-5">'+
@@ -436,12 +435,14 @@ $(".add-images").on("click", function () {
             var marca = document.getElementById('marca_select').value;
             var año = document.getElementById('año_select').value;
             var modelo = document.getElementById('modelo_select').value;
-            var yonke_id = document.getElementById('yonke_elegido').value;
+            var yonke_id = document.getElementById('yonke-elegido').value;
+            var cantidad = document.getElementById('cantidad').value;
 
             formData.append('año', año);
             formData.append('marca', marca);
             formData.append('modelo', modelo);
-            formData.append('yonke_elegido', yonke_id);
+            formData.append('yonke_id', yonke_id);
+            formData.append('cantidad', cantidad);
 
             fetch('./backend/autos_clientes/subir_auto.php', {
                 method: 'POST',
@@ -452,6 +453,14 @@ $(".add-images").on("click", function () {
                  preload.classList.remove('activate-preload');
                  clearFormDataAndThumbnails();
                  console.log(data);
+
+                 if(data == 1){
+                    Swal.fire(
+                        "¡Correcto!",
+                        "Se registro una nueva unidad en el inventario",
+                        "success"
+                        )
+                 }
               }).catch(function (err) { 
                   console.log(err);
                })

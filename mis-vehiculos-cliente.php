@@ -26,7 +26,9 @@ include 'backend/login/conexion.php';
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="frontend/css/style-navbar.css">
-    <link rel="stylesheet" href="frontend/css/formulario-nuevo-vehiculo.css">
+    
+    <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="frontend/css/formulario-nuevo-vehiculo.css"> 
     
     <link rel="icon" href="frontend/recursos/icon/favicon.ico" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>

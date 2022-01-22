@@ -57,7 +57,7 @@
             $micarpeta = '../../frontend/recursos/img/base_datos/carpeta_user_'. $usuario_id;
             if (!file_exists($micarpeta)) {
                 mkdir($micarpeta, 0777, true);
-                $micarpetaYonke = '../../frontend/recursos/img/base_datos/carpeta_user_'. $usuario_id . '/yonkes';
+                $micarpetaYonke = '../../frontend/recursos/img/base_datos/carpeta_user_'. $usuario_id;
                 if (!file_exists($micarpetaYonke)) {
                     mkdir($micarpetaYonke, 0777, true);
                 }
@@ -71,11 +71,11 @@
                 $resultado->execute();
                 $resultado->close();
 
-                $micarpetaYonkes = '../../frontend/recursos/img/base_datos/carpeta_user_'. $usuario_id . '/yonkes/yonke_id_'.$yonke_id;
+                /* $micarpetaYonkes = '../../frontend/recursos/img/base_datos/carpeta_user_'. $usuario_id . '/yonkes/yonke_id_'.$yonke_id;
                 if (!file_exists($micarpetaYonkes)) {
                     mkdir($micarpetaYonkes, 0777, true);
                     
-                }
+                } */
 
               
             }
@@ -89,8 +89,9 @@
                     marca VARCHAR(150),
                     stock int,
                     estatus VARCHAR(60),
-                    id_yonke int,
-                    fecha varchar(100)
+                    fecha varchar(100),
+                    id_yonke int
+                    
                 );";
                 $result = $con->prepare($crear_tabla);
                 $result->execute();
