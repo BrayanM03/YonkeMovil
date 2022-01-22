@@ -24,7 +24,14 @@ function mostrarFormularioNuevoVehiculo(){
       '<div class="row justify-content-center">'+
           '<div class="col-12 col-md-8 p-3">'+
                 '<div class="card p-3">'+
-                    '<div class="row">'+
+                '<div class="row justify-content-center">'+
+                    '<div class="col-12 col-md-4">'+
+                        '<label for="yonke-elegido"><b>Agregar a:</b></label>'+
+                        '<select class="form-control" id="yonke-elegido">'+
+                        '</select>'+
+                    '</div>'+
+                '</div>'+
+                    '<div class="row mt-3">'+
                         '<div class="col-12 col-md-4">'+
                             '<div class="form-group">'+
                                 '<label><b>Año</b></label>'+
@@ -184,6 +191,29 @@ function mostrarFormularioNuevoVehiculo(){
           '</div>'+
       '</div>'+
   '</div>');
+
+
+  //Traer yonkes del usuario
+  user_id = $("#profile-details").attr("sesion_id");
+  $.ajax({
+    type: "POST",
+    url: "./backend/yonkes/traer-yonkes-cliente.php",
+    data: {"user_id": user_id},
+    dataType: "JSON",
+    success: function (response) {
+     
+      response.forEach(element => {
+          console.log(element.nombre);
+
+          $("#yonke-elegido").append(`
+                <option value="${element.id_yonke}">${element.nombre}</option>
+              `)
+
+      });
+      
+      
+    }
+  });
 
  
   //Mandar a llamar los autos las marcas del año en cuestion
@@ -400,10 +430,12 @@ $(".add-images").on("click", function () {
             var marca = document.getElementById('marca_select').value;
             var año = document.getElementById('año_select').value;
             var modelo = document.getElementById('modelo_select').value;
+            var yonke_id = document.getElementById('yonke_elegido').value;
 
             formData.append('año', año);
             formData.append('marca', marca);
             formData.append('modelo', modelo);
+            formData.append('yonke_elegido', yonke_id);
 
             fetch('./backend/autos_clientes/subir_auto.php', {
                 method: 'POST',

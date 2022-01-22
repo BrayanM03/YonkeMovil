@@ -18,7 +18,7 @@ session_start();
     $year = $_POST["año"];
     $marca = $_POST["marca"];
     $modelo =  $_POST["modelo"];
-    $yonke_id = 1; //yonke id test
+    $yonke_id = $_POST["yonke_id"]; //yonke id test
     //Validamos si se mandaron fotos o no
     if ($numero_fotos_subidas == 0) {
         print_r("Data:" . $_POST["año"] . " " . $_POST["marca"] . " " . $_POST["modelo"] . " ");

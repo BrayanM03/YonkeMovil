@@ -59,31 +59,8 @@ $(".item-con-icono").hover(function() {
 
  //Traer yonkes de cliente
  
-    user_id = $("#lista-yonkes-cliente-navbar").attr("id_sesion");
+   
 
-    $.ajax({
-      type: "POST",
-      url: "./backend/yonkes/traer-yonkes-cliente.php",
-      data: {"user_id": user_id},
-      dataType: "JSON",
-      success: function (response) {
-       
-        response.forEach(element => {
-            console.log(element.nombre);
 
-            $("#lista-yonkes-cliente-navbar").append(`
-        <li class="list-item">
-                <a href="mis-vehiculos-cliente.php">
-                  <i class='bx bx-car'></i>
-                  <span class="links_name">${element.nombre}</span>
-                </a>
-                <span class="tooltip">${element.nombre}</span>
-              </li>`)
-
-        });
-        
-        
-      }
-    });
 
 

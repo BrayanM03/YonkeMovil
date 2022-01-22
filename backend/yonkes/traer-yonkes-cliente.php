@@ -44,7 +44,7 @@ if (!isset($_SESSION['id'])) {
                 $result->fetch();
                 $result->close();
 
-                $response[] = array("nombre"=>$nombre);
+                $response[] = array("id_yonke"=>$id_yonke, "nombre"=>$nombre);
 
             }else{
                 $response = array("mensaje"=> "No se encontro ningun Yonke con el id del detalle de Yonke, compruebe la base de datos.");

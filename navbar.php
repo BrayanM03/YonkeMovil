@@ -20,31 +20,12 @@
        </a>
        </li>
 
-       <li class="list-item">
-       <a href="#collapse-yonkes" class="collapsible">
+      <!--  <li class="list-item">
+       <a href="yonkes-cliente.php">
        <i class='bx bxs-store' ></i>
          <span class="links_name">Yonkes</span>
        </a>
-          <div id="collapse-yonkes" class="content-collapse">
-          <ul id="lista-yonkes-cliente-navbar" id_sesion="<?php echo $_SESSION['id'] ?>">
-                <!-- <li class="list-item">
-                <a href="mis-vehiculos-cliente.php">
-                  <i class='bx bx-car'></i>
-                  <span class="links_name">Mis Vehiculos</span>
-                </a>
-                <span class="tooltip">Vehiculos</span>
-              </li>
-              <li class="list-item">
-                <a href="mis-partes-cliente.php">
-                  <i class='bx bx-car'></i>
-                  <span class="links_name">Mis Partes</span>
-                </a>
-                <span class="tooltip">Partes</span>
-              </li> -->
-          </ul>
-          
-          </div>
-       </li>
+       </li> -->
        
      <li class="list-item">
        <a href="#collapse-inv" class="collapsible">
@@ -85,7 +66,7 @@
     </ul>
     <ul>
     <li class="profile">
-         <div class="profile-details">
+         <div class="profile-details" id="profile-details" sesion_id="<?php echo $_SESSION['id'];?>">
            <img src="frontend/recursos/img/pp/<?php echo $_SESSION["username"] ?>.jpg" alt="profileImg">
            <div class="name_job">
              <div class="name"><?php echo $_SESSION['nombre']; ?></div>
