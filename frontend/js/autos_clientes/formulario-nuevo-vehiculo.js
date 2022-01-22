@@ -153,6 +153,12 @@ function mostrarFormularioNuevoVehiculo(){
 
                     '</div>'+
 
+                    '<div class="row mt-3 justify-content-center">'+
+                    '<div class="col-12 col-md-3">'+
+                        '<label for="stock"><b>Cantidad</b></label>'+
+                        '<input class="form-control" type="number" id="stock" placeholder="0">'+
+                    '</div>'+
+                    '</div>'+
                     //Cuerpo del card
                     '<div class="row justify-content-center">'+
                         '<div class="col-12 col-md-3 mt-5">'+

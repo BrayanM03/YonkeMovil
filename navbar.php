@@ -20,12 +20,40 @@
        </a>
        </li>
 
+<<<<<<< HEAD
       <!--  <li class="list-item">
        <a href="yonkes-cliente.php">
        <i class='bx bxs-store' ></i>
          <span class="links_name">Yonkes</span>
        </a>
        </li> -->
+=======
+       <li class="list-item">
+       <a href="yonkes-cliente.php" class="collapsible">
+       <i class='bx bxs-store' ></i>
+         <span class="links_name">Yonkes</span>
+       </a>
+          <!--<div id="collapse-yonkes" class="content-collapse">
+          <ul id="lista-yonkes-cliente-navbar" id_sesion="<?php echo $_SESSION['id'] ?>">
+                 <li class="list-item">
+                <a href="mis-vehiculos-cliente.php">
+                  <i class='bx bx-car'></i>
+                  <span class="links_name">Mis Vehiculos</span>
+                </a>
+                <span class="tooltip">Vehiculos</span>
+              </li>
+              <li class="list-item">
+                <a href="mis-partes-cliente.php">
+                  <i class='bx bx-car'></i>
+                  <span class="links_name">Mis Partes</span>
+                </a>
+                <span class="tooltip">Partes</span>
+              </li> 
+          </ul>
+          
+          </div>-->
+       </li>
+>>>>>>> 7b5cd3226e9dd982cee02862cb11721638440736
        
      <li class="list-item">
        <a href="#collapse-inv" class="collapsible">
