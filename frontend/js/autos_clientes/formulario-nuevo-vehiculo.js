@@ -449,6 +449,7 @@ $(".add-images").on("click", function () {
                 body: formData
             }).then(function (response) { 
                 return response.json();
+                clearFormDataAndThumbnails();
              }).then(function (data) { 
                  preload.classList.remove('activate-preload');
                  clearFormDataAndThumbnails();
@@ -460,6 +461,7 @@ $(".add-images").on("click", function () {
                         "Se registro una nueva unidad en el inventario",
                         "success"
                         )
+                        clearFormDataAndThumbnails();
                  }
               }).catch(function (err) { 
                   console.log(err);

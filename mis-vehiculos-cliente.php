@@ -62,7 +62,13 @@ require_once("navbar.php");
       </div>
 
       <div class="row justify-content-center">
-          <div class="col-12 col-md-10 p-3">
+          <div class="col-12 col-md-3 p-3" >
+              <select class="form-control" id="lista-yonke"></select>
+          </div>
+      </div>
+
+      <div class="row justify-content-center">
+          <div class="col-12 col-md-6 p-3">
                 <table id="tabla_autos_cliente" class="table table-striped" style="background-color: white;"></table>
           </div>
       </div>
@@ -86,6 +92,8 @@ require_once("navbar.php");
     <script src="frontend/js/autos_clientes/mis-autos-cliente.js"></script>
     <script src="frontend/js/autos_clientes/formulario-nuevo-vehiculo.js"></script>
     <script src="frontend/js/autos_clientes/image-preload.js"></script>
+    <script src="frontend/js/autos_clientes/inventario-cliente.js"></script>
+
 
 </body>
 </html>

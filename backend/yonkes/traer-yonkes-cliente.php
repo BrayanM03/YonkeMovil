@@ -8,7 +8,7 @@ if (!isset($_SESSION['id'])) {
     header("Location:../../login.php");
 }
 
-    $id_user = $_POST["user_id"];
+    $id_user = $_SESSION["id"];
     $traer = "SELECT COUNT(*) FROM detalle_yonke WHERE id_usuario =?";
     $result = $con->prepare($traer);
     $result->bind_param('s', $id_user);
