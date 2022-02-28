@@ -20,11 +20,13 @@ session_start();
     $modelo =  $_POST["modelo"];
     $yonke_id = $_POST["yonke_id"]; //yonke id test
     //Validamos si se mandaron fotos o no
+    //chown('Applications/XAMPP/xamppfiles/htdocs/Yonkemovil', 'www-data:www-data');
+
     if ($numero_fotos_subidas == 0) {
        
         //Verificamos si existe la carpeta unica de cliente
         if (!is_dir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id)) {
-            mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id);
+            mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id,0777);
         }
 
         $query = "INSERT INTO $tabla(id, año, modelo, marca, stock, estatus, fecha, id_yonke) VALUES (null,?,?,?,?,?,?,?);";
@@ -36,7 +38,7 @@ session_start();
 
             //Verificamos si existe la carpeta unica de cliente
             if (!is_dir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id . "/". $last_id. "_". $year . "_". $modelo . "_" .$marca)) {
-                mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id . "/". $last_id. "_". $year . "_". $modelo . "_" .$marca);
+                mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id . "/". $last_id. "_". $year . "_". $modelo . "_" .$marca, 0777);
     
                 
     
@@ -49,7 +51,7 @@ session_start();
 
         //Verificamos si existe la carpeta unica de cliente
         if (!is_dir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id)) {
-            mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id);
+            mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id, 0777);
         }
 
      //Insertamos la unidad en el inventario de yonkes
@@ -61,7 +63,7 @@ session_start();
             $last_id = mysqli_insert_id($con);
             //Verificamos si existe la carpeta unica de cliente
         if (!is_dir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id . "/". $last_id. "_". $year . "_". $modelo . "_" .$marca)) {
-            mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id . "/". $last_id . "_". $year . "_". $modelo . "_" .$marca);
+            mkdir('../../frontend/recursos/img/base_datos/carpeta_user_'. $_SESSION['id'] .'/yonke_id_' . $yonke_id . "/". $last_id . "_". $year . "_". $modelo . "_" .$marca, 0777);
 
         }else{ //En este caso se encontro una carpeta con ese mismo modelo de carro y año
            // print_r("Ya agrego este modelo de auto a su base de datos");

@@ -17,7 +17,7 @@ function mostrarFormularioNuevoVehiculo(){
 
       '<div class="row justify-content-center">'+
           '<div class="col-12 col-md-10 p-3">'+
-              '<div class="btn btn-success item-con-icono" onclick="RegresaralInventario()"><i class="bx bx-border bx-arrow-back"></i> | Regresar al inventario</div>'+
+              '<div class="btn btn-success item-con-icono" onclick="location.reload()"><i class="bx bx-border bx-arrow-back"></i> | Regresar al inventario</div>'+
          '</div>'+
       '</div>'+
 
@@ -197,6 +197,8 @@ function mostrarFormularioNuevoVehiculo(){
       '</div>'+
   '</div>');
 
+    
+
 
   //Traer yonkes del usuario
   user_id = $("#profile-details").attr("sesion_id");
@@ -328,7 +330,7 @@ $(".add-images").on("click", function () {
 
  });
 
-
+ 
 
  //Logica detrass del preload de las imagenes
 
@@ -477,6 +479,7 @@ $(".add-images").on("click", function () {
 
 
 }
+
 
 
 

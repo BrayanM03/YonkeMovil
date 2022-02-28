@@ -68,7 +68,7 @@ require_once("navbar.php");
       </div>
 
       <div class="row justify-content-center">
-          <div class="col-12 col-md-6 p-3">
+          <div class="col-12 col-md-8 p-3">
                 <table id="tabla_autos_cliente" class="table table-striped" style="background-color: white;"></table>
           </div>
       </div>
