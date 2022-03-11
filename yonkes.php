@@ -23,7 +23,7 @@ include 'backend/login/conexion.php';
 
     <!-- Librerias de terceros -->
     <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-borderless@5/borderless.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -164,11 +164,11 @@ include 'backend/login/conexion.php';
     <script type="text/javascript" src="frontend/node_modules/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="frontend/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
-    <script src="frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
+    <script src="https://kit.fontawesome.com/31a28ea63e.js" crossorigin="anonymous"></script>
 
 
     <!----Mis librerias----->

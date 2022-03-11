@@ -28,7 +28,7 @@ include 'backend/login/conexion.php';
 <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css"><!-- 
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'> -->
 
-   <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-borderless@5/borderless.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -147,7 +147,7 @@ include 'backend/login/conexion.php';
   </div>
   <section class="home-section">
 
-  <div class="contenedor-principal m-3" style="font-size: 14px;">
+  <div class="contenedor-principal m-3" id="contenedor-principal" style="font-size: 14px;">
     <div class="row">
         <div class="col-12 col-md-12 text-center mt-3">
             <h4 style="font-size: 20px;">Agregar un usuario</h4>
@@ -188,7 +188,7 @@ include 'backend/login/conexion.php';
       <div class="row justify-content-center mt-3">
         <div class="col-12 col-md-5">
                 <label><b>Rol</b></label>
-                <select type="text" class="form-control m-auto" onchange="asignarYonke(this);" name="rol" id="rol" >
+                <select type="text" class="form-control m-auto" name="rol" id="rol" >
                 <option value="0">Administrador</option>
                 <option value="1">Usuario de Yonke</option>
                 </select>   
@@ -212,7 +212,7 @@ include 'backend/login/conexion.php';
     
       <div class="row  mt-3">
         <div class="col-12 col-md-12 text-center">
-            <div class="btn btn-primary btn-lg" onclick="agregarUsuario();">Agregar usuario</div>
+            <div class="btn btn-success btn-lg" id="btn-register" onclick="agregarUsuario();">Agregar usuario</div>
         </div>
       </div>        
                

@@ -80,7 +80,7 @@
               
             }
 
-                //Creamos la tabla del inventario de cliente
+                /*Creamos la tabla del inventario de cliente
                 $tabla = "inventario_cliente_" . $usuario_id;
                 $crear_tabla = "CREATE TABLE $tabla (
                     id int NOT NULL PRIMARY KEY,
@@ -97,7 +97,7 @@
                 $result->execute();
                 $result->close();
 
-                //
+                */
         }
 
         print_r(1);

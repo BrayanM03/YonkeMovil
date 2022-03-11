@@ -122,110 +122,15 @@
                           $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
                         }
                       } 
-
-
-
-
-
-
-
-                      //Funcion que hara aprecer el select2 para asignar yonkes 
-function asignarYonke(opcion){
-
-    if($("#rol").val() == 0){
-      $("#buscador-yonke").empty(); 
-    }else{
   
-      $("#buscador-yonke").empty();
-      $("#buscador-yonke").append('<label><b>Asignar Yonke:<b></label>'+
-      '<select class="form-control" id="buscar-yonke" name="yonkes[]" multiple="multiple">'+
-      '<div class="invalid-feedback">Ingresa un yonke.</div>'+
-       
-      '</select>');
-  
-    
-      
-  
-      
-  
-  
-      $("#buscar-yonke").select2({
-        placeholder: "Busca un yonke...",
-        theme: "bootstrap",
-        minimumInputLength: 0,
-        ajax: {
-            url: "./backend/usuarios/buscar-yonke.php",
-            type: "post",
-            dataType: 'json',
-            delay: 250,
-   
-            data: function (params) {
-             return {
-               searchTerm: params.term // search term
-   
-             };
-            },
-            processResults: function (data) {
-                return {
-                   results: data
-                };
-              },
-   
-            cache: true
-   
-        },
-        language:  {
-   
-            inputTooShort: function () {
-                return "Busca una yonke...";
-              },
-   
-            noResults: function() {
-   
-              return "Sin resultados";
-            },
-            searching: function() {
-   
-              return "Buscando..";
-            }
-          },
-   
-          templateResult: formatRepoS,
-          templateSelection: formatRepoSelectionS
-    });
-   
-    function formatRepoS (repo) {
-   
-        if (repo.loading) {
-          return repo.text;
-        }
-   
-   
-   
-   var $container = $(
-   "<div style='' class='select2-result-repository clearfix'>" +
-   "<div style='width:100%;'><span style='margin-left:10px;'>" + repo.nombre +"</span> </div>"+
-   "</div>"
-   );
-   
-   
-   
-          return $container;
-        }
-   
-   function formatRepoSelectionS  (repo) {
-   
-          $("#buscador-yonke").attr("yonke", repo.nombre);
-          $("#buscador-yonke").attr("yonke_id", repo.id);
-          return repo.text || repo.nombre;
-        }
-  
-    }
-     
-  
-  }
-
-  
+                  $("#rol").on("change", function(){
+                    
+                    if($("#rol").val()==1){
+                      $("#btn-register").empty().removeClass('btn-success').addClass('btn-primary').append("Siguiente");
+                    }else{
+                      $("#btn-register").empty().removeClass('btn-primary').addClass('btn-success').append("Agregar usuario");
+                    }
+                  })    
 
 
 function agregarUsuario(){
@@ -238,6 +143,13 @@ function agregarUsuario(){
         "rol":           $("#rol").val(),
         "puesto":        $("#puesto").val()
       };
+
+      nombre_usuario=        $("#nombre").val();
+      username=              $("#usuario").val();
+      pass_usuario=          $("#contraseña").val();
+      rol_usuario=           $("#rol").val();
+      puesto_usuario=        $("#puesto").val();
+    
     
       if( data["nombre"] == ""){
         $(".datoVacio").removeClass("datoVacio");
@@ -269,48 +181,24 @@ function agregarUsuario(){
         $(".border-danger").removeClass("border-danger");
         $("#puesto").addClass("is-invalid");
         $("#text-invalid-puesto-input").text("Ingresa una contraseña");
-      }else if($("#rol").val() == 1){
+     
+      }else if($("#rol").val() == 0){
        
         
         
         
-  nombre_usuario=        $("#nombre").val();
-  username=              $("#usuario").val();
-  pass_usuario=          $("#contraseña").val();
-  rol_usuario=           $("#rol").val();
-  puesto_usuario=        $("#puesto").val();
 
-  yonkes_escogidos =$("#buscar-yonke").val();
-  if(yonkes_escogidos == null || yonkes_escogidos.length == 0){
-    console.log("Sin datos");
-    $("#buscar-yonke").addClass("invalid");
-  };
+  insertarRegistro(nombre_usuario, username, pass_usuario, rol_usuario, puesto_usuario);
 
 
-$.ajax({
-  type: "POST",
-  url: "./backend/usuarios/agregar-nuevo-usuario.php",
-  data:{"nombre": nombre_usuario, "usuario": username, "contraseña": pass_usuario, "rol": rol_usuario, "puesto": puesto_usuario, "yonkes" : yonkes_escogidos},
-  success: function(response) {
-    
-    if(response == 1){
-      Swal.fire(
-        "¡Correcto!",
-        "Se registro el usuario",
-        "success"
-        )
-    }else if(response == 2){
-      Swal.fire(
-        "¡Hubo un error!",
-        "Ese usuario ya fue registrado",
-        "error"
-        )
-    }
-
-  },
-}); 
       
+      }else if($("#rol").val() == 1){
+
+      asignarYonke(nombre_usuario, username, pass_usuario, rol_usuario, puesto_usuario)
+
+
       }else if($("#usuario").attr("validar")=="invalid"){
+
         console.log("rol");
         if($("#buscador-yonke").attr("yonke") == null){
           console.log("cuak");
@@ -322,39 +210,6 @@ $.ajax({
           )
         }
       
-      }else{
-        
-  
-  nombre_usuario=        $("#nombre").val();
-  username=              $("#usuario").val();
-  pass_usuario=          $("#contraseña").val();
-  rol_usuario=           $("#rol").val();
-  puesto_usuario=        $("#puesto").val();
-
-  yonkes_escogidos =$("#buscar-yonke").val();
-
-$.ajax({
-  type: "POST",
-  url: "./backend/usuarios/agregar-nuevo-usuario.php",
-  data:{"nombre": nombre_usuario, "usuario": username, "contraseña": pass_usuario, "rol": rol_usuario, "puesto": puesto_usuario, "yonkes" : yonkes_escogidos},
-  success: function(response) {
-
-    if(response == 1){
-      Swal.fire(
-        "¡Correcto!",
-        "Se registro el usuario",
-        "success"
-        )
-    }else if(response == 2){
-      Swal.fire(
-        "¡Hubo un error!",
-        "Ese usuario ya fue registrado",
-        "error"
-        )
-    }
-  },
-}); 
-                      
       }
 
 }
@@ -373,5 +228,156 @@ $("#nombre").keyup(function(){
     $("#nombre").addClass("is-invalid");
   };
 
-})
+});
+
+//Funcion que registra el cliente
+function insertarRegistro(nombre_usuario, username, pass_usuario, rol_usuario, puesto_usuario){
+
+  $.ajax({
+    type: "POST",
+    url: "./backend/usuarios/agregar-nuevo-usuario.php",
+    data:{"nombre": nombre_usuario, "usuario": username, "contraseña": pass_usuario, "rol": rol_usuario, "puesto": puesto_usuario},
+    success: function(response) {
+      
+      if(response == 1){
+        Swal.fire(
+          "¡Correcto!",
+          "Se registro el usuario",
+          "success"
+          )
+      }else if(response == 2){
+        Swal.fire(
+          "¡Hubo un error!",
+          "Ese usuario ya fue registrado",
+          "error"
+          )
+      }
+  
+    },
+  }); 
+
+}
+
+
+function asignarYonke(nombre_usuario, username, pass_usuario, rol_usuario, puesto_usuario){
+  $arreglo = [nombre_usuario, username, pass_usuario, rol_usuario, puesto_usuario];
+  console.log($arreglo);
+  $("#contenedor-principal").empty();
+  $("#contenedor-principal").append(`
+  
+  <div class="row">
+  <div class="col-12 col-md-12 text-center mt-3">
+      <h4 style="font-size: 20px;">Nuevo Yonke</h4>
+      <p style="font-size: 14px;">Okey, ahora registra un yonke para este usuario</p>
+  </div>  
+</div>
+
+<div class="row justify-content-center mt-3">
+  <div class="col-12 col-md-5">
+      <label for="nombre-yonke"><b>Nombre</b></label>
+      <input id="nombre-yonke" class="form-control" type="text" placeholder="Nombre de la sucursal">
+      <div class="invalid-feedback">Agrega un nombre</div>
+  </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+<div class="col-12 col-md-5">
+      <label for="contacto-yonke""><b>Contacto</b></label> 
+      <input id="contacto-yonke" class="form-control" type="text" placeholder="Nombre de un contacto">
+      <div class="invalid-feedback" id="text-invalid-user-input"></div>
+  </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+  <div class="col-12 col-md-5">
+   <label for="telefono-yonke"><b>Telefono</b></label>
+    <input type="text" class="form-control" id="telefono-yonke" placeholder="Telefono">
+  </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+  <div class="col-12 col-md-5">
+          <label for="estatus-yonke"><b>Estatus</b></label>
+          <input type="text" class="form-control" id="estatus-yonke" placeholder="Estatus"/>
+  </div>
+</div>
+
+
+ <div class="row justify-content-center mt-3">
+  <div class="col-12 col-md-5">
+      <label id="direccion-yonke"><b>Direccion:</b></label>
+      <textarea type="text" class="form-control" id="direccion-yonke" placeholder="Escribe la direccion del yonke..."></textarea>
+      <div class="invalid-feedback" id="text-invalid-puesto-input">Contraseña insegura.</div> 
+  </div>
+</div>
+
+<div class="row  mt-3">
+  <div class="col-12 col-md-12 text-center">
+      <div class="btn btn-primary btn-lg" onclick="agregarOtroYonke();">Registrar otro yonke</div>
+      <div class="btn btn-success btn-lg" onclick="agregarUsuarioYonke();">Finalizar registro</div>
+      <div id="area-ver"></div>
+  </div>
+</div>  
+
+  `);
+}
+
+
+//Funciones para la lista de yonkes_encontrados
+
+arreglosYonkes = [];
+function agregarOtroYonke() {
+  let nombre_yonke = $("#nombre_yonke").val();
+  let contacto_yonke = $("#contacto_yonke").val();
+  let telefono_yonke = $("#telefono_yonke").val();
+  let estatus_yonke = $("#estatus_yonke").val();
+  let direccion_yonke = $("#direccion_yonke").val();
+
+  let datos = {
+    "nombre_yonke": nombre_yonke,
+    "contacto_yonke": contacto_yonke,
+    "telefono_yonke": telefono_yonke,
+    "estatus_yonke": estatus_yonke,
+    "direccion_yonke": direccion_yonke
+  }
+  arreglosYonkes.push(datos);
+  console.log(arreglosYonkes);
+
+  $("#nombre_yonke").val("");
+  $("#contacto_yonke").val("");
+  $("#telefono_yonke").val("");
+  $("#estatus_yonke").val("");
+  $("#direccion_yonke").text("");
+
+  $("#area-ver").empty().append(`
+  <div class="btn btn-info btn-lg" onclick="verLista(${arreglosYonkes});">Ver lista</div>`);
+}
+
+function verLista(arreglosYonkes) {
+  console.log(arreglosYonkes);
+  Swal.fire({
+
+    title: "Yonkes actuales",
+    html: `
+      <div class="row justify-content-center container">
+          <div class="col-12 col-md-12">
+              <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action active">
+                Cras justo odio
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+              <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+              <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+              <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+            </div>
+          </div>
+      </div>
+    `,
+    showCloseButton: true,
+    showConfirmButton: true,
+    confirmButtonText: "Todo bien"
+
+  });
+  }
+
 

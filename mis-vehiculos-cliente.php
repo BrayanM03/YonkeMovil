@@ -15,24 +15,29 @@ include 'backend/login/conexion.php';
 
 ?>
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+
 <html lang="es" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title> Inventario de vehiculos | YonkeMovil </title>
+
+    <!-- Frameworks y Librerias -->
     <link rel="stylesheet" type="text/css" href="frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="frontend/css/style-navbar.css">
+    <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css"> 
     
-    <link rel="stylesheet" type="text/css" href="frontend/node_modules/sweetalert2/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="frontend/css/formulario-nuevo-vehiculo.css"> 
-    
+    <!-- Iconos -->
     <link rel="icon" href="frontend/recursos/icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css"> 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Mis propios estilos -->
+    <link rel="stylesheet" href="frontend/css/formulario-nuevo-vehiculo.css">
+    <link rel="stylesheet" href="frontend/css/style-navbar.css">
+   
     <style>
       .select2 {
                 width:100%!important;
@@ -67,9 +72,9 @@ require_once("navbar.php");
           </div>
       </div>
 
-      <div class="row justify-content-center">
-          <div class="col-12 col-md-8 p-3">
-                <table id="tabla_autos_cliente" class="table table-striped" style="background-color: white;"></table>
+      <div class="row justify-content-center"> 
+          <div class="col-12 col-md-7">
+                <table id="tabla_autos_cliente" class="table table-striped table-responsive" style="background-color: white;"></table>
           </div>
       </div>
   </div>
@@ -83,8 +88,8 @@ require_once("navbar.php");
     <script src="frontend/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
     <script src="frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!--     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+ -->    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!----Mis librerias----->
     <script src="frontend/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
@@ -93,6 +98,9 @@ require_once("navbar.php");
     <script src="frontend/js/autos_clientes/formulario-nuevo-vehiculo.js"></script>
     <script src="frontend/js/autos_clientes/image-preload.js"></script>
     <script src="frontend/js/autos_clientes/inventario-cliente.js"></script>
+    <script src="frontend/js/autos_clientes/eliminar-auto.js"></script>
+    <script src="frontend/js/autos_clientes/editar-auto.js"></script>
+    
 
 
 </body>

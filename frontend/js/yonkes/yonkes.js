@@ -23,8 +23,8 @@ function MostrarYonkes() {
       data: null,
       className: "celda-acciones",
       render: function (row, data) {
-        return '<a href="./editar-usuario.php?id=' +row.id+ '"><div style="display: flex"><button type="button" class="buttonPDF btn btn-success" style="margin-right: 8px"><span class="fa fa-edit"></span><span class="hidden-xs"></span></button></a><br>'+
-        '<button type="button" onclick="borrarUsuario('+ row.id +');" class="buttonBorrar btn btn-warning"><span class="fa fa-trash"></span><span class="hidden-xs"></span></button></div>';
+        return `<div class="btn btn-primary m-1" onclick="verInventario(${row.id})"><i class="fa-solid fa-eye"></i></div>
+                <div class="btn btn-danger m-1"><i class="fa-solid fa-trash"></i></div>`;
       },
     },
   ],
@@ -250,11 +250,12 @@ function agregarYonke() {
             '</div>'+
                     '</div>'+
         '</form>',
-      width: "400px",
+      width: "500px",
       showCancelButton: true,
       cancelButtonText: 'Cerrar',
       cancelButtonColor: '#00e059',
       showConfirmButton: true,
+      showCloseButton: true,
       confirmButtonText: 'Agregar',
       cancelButtonColor:'#ff764d',
       focusConfirm: false,
