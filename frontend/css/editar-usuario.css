@@ -1,0 +1,68 @@
+ .foto-perfil{
+  /*  background-image: url("../../img/pp/brayan.jpg");*/
+    background-position: center;
+    background-size: cover;
+    z-index: 100;
+    margin-top: 50px;
+} 
+
+.foto-perfil:hover{
+    /*
+    opacity: 0.07;
+    -webkit-transition: opacity 300ms;
+    -moz-transition: opacity 300ms;
+    -o-transition: opacity 300ms;
+    -ms-transition: opacity 300ms;
+    transition: opacity 300ms;
+    cursor: pointer;
+    z-index: 1;
+    color: black;*/
+    filter:brightness(0.6);
+    cursor: pointer;
+}
+
+#texto-pp{
+    display: none;
+    color:transparent;
+    position:absolute;
+    display: flex;
+    z-index: 9;
+    margin-top: 90px; 
+    margin-left: 70px;
+    font-size: 18px;
+    width: 40%;
+}
+
+.texto-pp:hover{
+    display: block ;
+    color: white;
+    cursor: pointer;
+}
+
+#archivo{
+    visibility: hidden;
+}
+
+#canvas
+{
+    border-style: solid;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 100%;
+    border-color: rgb(78, 78, 78);
+    background-color: darkgray;
+    cursor: move;
+}
+
+#imagenMostrada
+{
+    height: 300px;
+    width: 300px;
+    border-radius: 100%;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+
+}

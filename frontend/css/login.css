@@ -1,0 +1,29 @@
+body{
+    overflow: hidden;
+    height: 100vh;
+}
+#dinosaur{
+
+    margin-left: 100vw;
+    animation: dino 10s ease-in-out;
+}
+
+#dino-fila{
+    margin-top:20vh;
+}
+
+@keyframes dino {
+    from {margin-left: 100vw;}
+    to {margin-left: -150vw;}
+  }
+
+
+  @media (max-width: 480px) {
+   
+#dino-fila{
+    margin-top:0px;
+}
+  }
+
+    
+      
